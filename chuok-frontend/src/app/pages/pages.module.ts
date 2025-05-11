@@ -5,6 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LiteratureComponent } from './literature/literature.component';
+import { ScienceComponent } from './science/science.component';
+import { NatureComponent } from './nature/nature.component';
 
 
 
@@ -14,7 +17,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LiteratureComponent,
+    ScienceComponent,
+    NatureComponent
   ],
   imports: [
     CommonModule

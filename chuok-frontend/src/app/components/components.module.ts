@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing.module';
-
+import { HeaderMainComponent } from './header-main/header-main.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderMainComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderMainComponent
   ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,108 @@
+.literature {
+  font-size: 7em;
+  font-weight: 500;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px;
+    height: 100%;
+    /* background-color: #dbdbdb; */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); */
+    border-bottom: #dbdbdb 1px solid;
+    /* border-radius: 0.5em; */
+    /* color: white; */
+    font-size: 20px;
+}
+
+.level-path-scroll-wrapper {
+  height: 500px;
+  overflow-x: hidden; /* Hide horizontal scroll */
+  overflow-y: scroll; /* Enable vertical scroll */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For IE and Edge */
+  cursor: grab;
+}
+
+.level-path-scroll-wrapper::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.level-path-scroll-wrapper.dragging {
+  cursor: grabbing;
+}
+
+.level-path-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 3 columns */
+  place-items: center;
+  padding: 10px;
+  gap: 30px;
+  height: 2000px; /* Make container taller than wrapper to enable scroll */ 
+}
+
+.level-button {
+  background-color: #c91a1a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+
+.question {
+    /* background-color: #faf2e2; */
+    border: #dbdbdb 1px solid;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px;
+    width: 90%;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 0.5em;
+}
+
+.answer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding: 10px;
+    gap: 30px;
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 0.5em;
+}
+
+.logo-picture {
+    width: 50px;
+    height: auto;
+}
+
+.answer {
+    border: #d29999 1px solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px;
+    width: 90%;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 0.5em;
+    cursor: pointer;
+}

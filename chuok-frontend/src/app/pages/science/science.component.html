@@ -1,0 +1,44 @@
+<p class="science">Science</p>
+<section class="info">
+    <div class="stats-container">Last stats: 
+        <p>Level: 1</p>
+        <p>Score: 0</p>
+        <p>Time: 0</p>
+        <p>Correct: 0</p>
+    </div>
+</section>
+<main class="level-path">
+    <div
+      #scrollWrapper
+      class="level-path-scroll-wrapper"
+      (mousedown)="onMouseDown($event)"
+      (mouseup)="onMouseUp()"
+      (mouseleave)="onMouseUp()"
+      (mousemove)="onMouseMove($event)"
+      (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)"
+      (touchend)="onTouchEnd()"
+      [class.dragging]="isDragging"
+    >
+      <div class="level-path-container" style="background-image: url('assets/images/level-path-bg/science-path-bg.png'); background-size: cover; background-position: center;">
+        <button *ngFor="let level of levels" class="level-button">
+          {{ level }}
+        </button>
+      </div>
+    </div>
+  </main>
+  
+  
+<section class="level-container">
+    <div class="question">
+        <img class="logo-picture" src="assets/images/characters/science-no-bg.png" alt="Literature Logo">
+        <p>Dicta qui temporibus deserunt distinctio officiis asperiores neque tempora. Hic ut esse et beatae beatae. Ea est sunt et quo. At autem rerum sequi cumque eum.</p>
+        <div class="answer-container">
+            <div class="answer">Answer 1</div>
+            <div class="answer">Answer 2</div>
+            <div class="answer">Answer 3</div>
+            <div class="answer">Answer 4</div>
+        </div>
+    </div>
+</section>
+

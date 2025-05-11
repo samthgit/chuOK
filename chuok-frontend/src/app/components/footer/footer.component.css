@@ -20,14 +20,14 @@
 }
 
 .footer-social-media .footer-logo-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    width: 100%;
 }
 
-.footer-social-media .footer-logo-image img {
-    width: 50%;
+.footer-social-media .footer-logo-image a img {
+    width: 25%;
     height: auto;
+    min-width: 50px;
     max-height: 100%;
     max-width: 100%;
 }

@@ -1,0 +1,23 @@
+<header class="header">
+    <nav class="nav-bar">
+        <!-- The logo is a link to the home page -->
+        <a routerLink="/main" routerLinkActive="active"><img class="logo-picture" src="assets/images/chuOK-logo-no-bg.png"></a>
+        <!-- The navigation links are wrapped in a list for better styling and accessibility -->
+        <!-- Each link is a routerLink that navigates to a different route in the application -->
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a routerLink="/home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/about" routerLinkActive="active">About</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/contact" routerLinkActive="active">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="profile-picture-container">
+        <!-- The profile picture is a link to the profile page -->
+        <a routerLink="/profile" routerLinkActive="active"><img class="profile-picture" src="assets/images/profile-picture-no-bg.png"></a>
+    </div>
+</header>
