@@ -1,8 +1,7 @@
-<ng-container *ngIf="!isSpecialPage(); else headerMain">
-    <app-header></app-header>
+<ng-container [ngSwitch]="headerType">
+  <app-header *ngSwitchCase="'default'"></app-header>
+  <app-header-main *ngSwitchCase="'main'"></app-header-main>
+  <app-header-home *ngSwitchCase="'home'"></app-header-home>
 </ng-container>
-<ng-template #headerMain>
-    <app-header-main></app-header-main>
-</ng-template>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

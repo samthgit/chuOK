@@ -1,0 +1,66 @@
+.catchphrase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.sections {
+    display: flex;
+    height: auto;
+    margin: 50px auto;
+}
+
+.literature, .science, .nature {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.literature {
+    background-color: #d6634c;
+}
+
+.science {
+    background-color: #4c6bd6;
+}
+
+.nature {
+    background-color: #6bb868;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    padding-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+    .sections {
+        flex-direction: column; /* Cambia de fila a columna */
+        height: auto; /* Altura automática para adaptarse al contenido */
+    }
+
+    .literature, .science, .nature {
+        height: 300px; /* Ajusta la altura de cada caja, o pon auto si lo prefieres */
+    }
+
+    .section-title {
+        padding-bottom: 20px; /* Opcional: ajusta el espaciado si se ve demasiado grande en pantallas pequeñas */
+    }
+}

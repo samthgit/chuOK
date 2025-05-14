@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-header-main',
@@ -7,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrl: './header-main.component.css'
 })
 export class HeaderMainComponent {
+  navOpen = false;
 
+  @ViewChild('navBar') navBar!: ElementRef;
+
+  toggleNav() {
+    this.navOpen = !this.navOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.navOpen) return;
+    const target = event.target as HTMLElement;
+    if (this.navBar && !this.navBar.nativeElement.contains(target)) {
+      this.navOpen = false;
+    }
+  }
 }

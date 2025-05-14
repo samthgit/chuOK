@@ -3,7 +3,7 @@
     height: auto;
 }
 
-.header .header-container {
+.header{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,111 +14,57 @@
     border-bottom: 1px solid #ccc;
 }
   
-.header .logo-container a .logo-picture {
-    height: 60px;      /* Fixed height to prevent overflow */
+.logo-picture {
+    height: 50px;      /* Fixed height to prevent overflow */
     width: auto;
     max-height: 100%;
     object-fit: contain;
 }
-  
-/* .header .profile-picture-container {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 10%;
+
+.nav-toggle {
+    gap: 20px; /* Space between items */
+    margin-top: 10px;
+    margin-left: 8px;
+    padding: 10px;
+    background-color: #2b2b2b;
+    border-radius: 5em;
+    width: 30px; /* Fixed width */
+    height: 30px;
+    position: fixed;
+    z-index: 999;
 }
 
-.header .profile-picture-container a {
-    text-decoration: none;
-    color: #292929;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    width: fit-content;
-} */
+.nav-toggle:hover {
+    background-color: #424242;
+}
 
 .nav-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    font-size: 24px;
-    padding: 0 10px;
-    width: 100%;
+    gap: 30px; /* Space between items */
+    margin: auto;
+    margin-top: 20px;
+    padding: 5px 0;
+    background-color: #2b2b2b;
+    border-radius: 5em;
+    width: 350px; /* Fixed width */
+    /* width: 20%; */
 }
 
-.nav-list {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-right: 10px;
-    width: 90%;
+.bounce-hover:hover {
+    animation: bounce 0.75s ease-in-out;
 }
 
-.nav-list li {
-    list-style: none;
-    padding: 10px 20px;
-    cursor: pointer;
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+    
 }
-
-.nav-list li a {
-    color: #292929;
-    text-decoration: none;
-}
-
-.home {
-    color: #60705f !important;
-    /* text-decoration: underline !important; */
-    /* border-bottom: 3px solid #60705f; */
-}
-
-#home:hover {
-    color: #60705f;
-}
-
-.literature {
-    color: #931616 !important;
-    /* border-bottom: 3px solid #931616; */
-    /* text-decoration: underline !important; */
-}
-
-#literature:hover {
-    color: #931616;
-}
-
-.science {
-    color: #161c93 !important;
-    /* border-bottom: 3px solid #161c93; */
-    /* text-decoration: underline !important; */
-}
-
-#science:hover {
-    color: #161c93;
-}
-
-.nature {
-    color: #178d13 !important;
-    /* border-bottom: 3px solid #178d13; */
-    /* text-decoration: underline !important; */
-}
-
-#nature:hover {
-    color: #178d13;
-}
-
-a .profile-picture {
-    margin-right: 25px;
-    height: 60px;      /* Fixed height to prevent overflow */
-    width: auto;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-
-/* 
-- 3-line button the user clicks on to show the menu
-- When the menu is open, the button should be replaced with an "X" icon
-- The menu should be a horizontal list of links that can be clicked to navigate to different pages
-- The menu should be hidden by default and only shown when the button is clicked
-- The menu should be responsive and adapt to different screen sizes
-*/

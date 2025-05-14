@@ -8,6 +8,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LiteratureComponent } from './literature/literature.component';
 import { ScienceComponent } from './science/science.component';
 import { NatureComponent } from './nature/nature.component';
+import { LibraryComponent } from './library/library.component';
+import { AdventureComponent } from './adventure/adventure.component';
 
 
 
@@ -20,7 +22,9 @@ import { NatureComponent } from './nature/nature.component';
     NotFoundComponent,
     LiteratureComponent,
     ScienceComponent,
-    NatureComponent
+    NatureComponent,
+    LibraryComponent,
+    AdventureComponent
   ],
   imports: [
     CommonModule

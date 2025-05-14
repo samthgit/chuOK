@@ -4,13 +4,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { HeaderMainComponent } from './header-main/header-main.component';
-
+import { HeaderHomeComponent } from './header-home/header-home.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    HeaderMainComponent
+    HeaderMainComponent,
+    HeaderHomeComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +20,8 @@ import { HeaderMainComponent } from './header-main/header-main.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    HeaderMainComponent
+    HeaderMainComponent,
+    HeaderHomeComponent
   ]
 })
 export class ComponentsModule { }

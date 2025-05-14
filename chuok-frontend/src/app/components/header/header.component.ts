@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, HostListener,ViewChild } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,65 +8,28 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  @ViewChild('homeLink') home!: ElementRef<HTMLAnchorElement>;
-  @ViewChild('literatureLink') literature!: ElementRef<HTMLAnchorElement>;
-  @ViewChild('scienceLink') science!: ElementRef<HTMLAnchorElement>;
-  @ViewChild('natureLink') nature!: ElementRef<HTMLAnchorElement>;
+  navOpen = false;
 
-  currentRoute: string = '';
-  currentCategory: string = '';
+  @ViewChild('navBar') navBar!: ElementRef;
 
-  constructor(private router: Router) {
-    this.router.events.subscribe(() => {
-      this.currentRoute = this.router.url;
-      this.updateCurrentCategory();
-      this.linkStyle();
+    constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.navOpen = false; // Close the menu on navigation
+      }
     });
   }
 
-  ngAfterViewInit() : void {
-    this.linkStyle();
+  toggleNav() {
+    this.navOpen = !this.navOpen;
   }
 
-  linkStyle() : void {
-    // Limpia estilos primero si hace falta
-    this.home.nativeElement.classList.remove('home');
-    this.literature.nativeElement.classList.remove('literature');
-    this.science.nativeElement.classList.remove('science');
-    this.nature.nativeElement.classList.remove('nature');
-
-    // Aplica estilos según la ruta
-    switch (true) {
-      case this.currentRoute.includes('/home'):
-        this.home.nativeElement.classList.add('home');
-        break;
-      case this.currentRoute.includes('/literature'):
-        this.literature.nativeElement.classList.add('literature');
-        break;
-      case this.currentRoute.includes('/science'):
-        this.science.nativeElement.classList.add('science');
-        break;
-      case this.currentRoute.includes('/nature'):
-        this.nature.nativeElement.classList.add('nature');
-        break;
-      default:
-        break;
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.navOpen) return;
+    const target = event.target as HTMLElement;
+    if (this.navBar && !this.navBar.nativeElement.contains(target)) {
+      this.navOpen = false;
     }
-  }
-
-  updateCurrentCategory(): void {
-    if (this.currentRoute.includes('/literature')) {
-      this.currentCategory = 'literature';
-    } else if (this.currentRoute.includes('/science')) {
-      this.currentCategory = 'science';
-    } else if (this.currentRoute.includes('/nature')) {
-      this.currentCategory = 'nature';
-    } else {
-      this.currentCategory = ''; // Default or no category
-    }
-  }
-
-  isCategoryPage(): boolean {
-    return this.currentRoute.includes('/literature') || this.currentRoute.includes('/nature') || this.currentRoute.includes('/science');
   }
 }

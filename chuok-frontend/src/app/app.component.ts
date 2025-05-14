@@ -16,7 +16,11 @@ export class AppComponent {
     });
   }
 
-  isSpecialPage(): boolean {
-    return this.currentRoute.includes('/main');
+  get headerType(): 'default' | 'main' | 'home' {
+    if (this.currentRoute.includes('/main')) return 'main';
+    if (this.currentRoute.includes('/about')) return 'main';
+    if (this.currentRoute.includes('/contact')) return 'main';
+    if (this.currentRoute.includes('/home')) return 'home';
+    return 'default';
   }
 }
