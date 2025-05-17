@@ -20,7 +20,6 @@ export class AppComponent {
     if (this.currentRoute.includes('/main')) return 'main';
     if (this.currentRoute.includes('/about')) return 'main';
     if (this.currentRoute.includes('/contact')) return 'main';
-    if (this.currentRoute.includes('/home')) return 'home';
     return 'default';
   }
 }

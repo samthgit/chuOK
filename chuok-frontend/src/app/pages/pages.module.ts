@@ -20,14 +20,15 @@ import { AdventureComponent } from './adventure/adventure.component';
     AboutComponent,
     ContactComponent,
     NotFoundComponent,
-    LiteratureComponent,
-    ScienceComponent,
-    NatureComponent,
+
     LibraryComponent,
     AdventureComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    LiteratureComponent,
+    ScienceComponent,
+    NatureComponent,
   ]
 })
 export class PagesModule { }

@@ -2,19 +2,20 @@
     <!-- The header contains the logo and the profile picture, both of which are links to different pages in the application -->
     <a routerLink="/main"><img class="logo-picture" src="assets/images/chuOK-logo-no-bg.png" alt="Home Logo"></a>
 </header>
-<div #navToggle class="nav-toggle" (click)="toggleNav()" *ngIf="!navOpen"></div>
-<nav #navBar class="nav-bar" *ngIf="navOpen">
-    <!-- The navigation links are wrapped in a list for better styling and accessibility -->
-     <a routerLink="/home" title="Articles & Phrases" class="bounce-hover">
-        <img class="logo-picture" src="assets/images/pages/home-2.png" alt="Home Logo">
-    </a>
-    <a routerLink="/library" title="Articles & Phrases" class="bounce-hover">
-        <img class="logo-picture" src="assets/images/pages/library-2.png" alt="Home Logo">
-    </a>
-    <a routerLink="/adventure" title="Adventure Mode" class="bounce-hover">
-        <img class="logo-picture" src="assets/images/pages/adventure-2.png" alt="Home Logo">
-    </a>
-    <a routerLink="/main" title="Profile" class="bounce-hover">
-        <img class="logo-picture" src="assets/images/pages/profile-2.png" alt="Home Logo">
-    </a>    
+<nav #navBar class="nav-bar" [class.open]="navOpen" (click)="toggleNav()">
+    <ng-container *ngIf="navOpen">
+        <!-- The navigation links are wrapped in a list for better styling and accessibility -->
+        <a routerLink="/home" title="Articles & Phrases" class="bounce-hover" (click)="closeNav()">
+            <img class="logo-picture" src="assets/images/pages/home.png" alt="Home Logo">
+        </a>
+        <a routerLink="/library" title="Articles & Phrases" class="bounce-hover" (click)="closeNav()">
+            <img class="logo-picture" src="assets/images/pages/library.png" alt="Home Logo">
+        </a>
+        <a routerLink="/adventure" title="Adventure Mode" class="bounce-hover" (click)="closeNav()">
+            <img class="logo-picture" src="assets/images/pages/adventure.png" alt="Home Logo">
+        </a>
+        <a routerLink="/main" title="Profile" class="bounce-hover" (click)="closeNav()">
+            <img class="logo-picture" src="assets/images/pages/profile.png" alt="Home Logo">
+        </a>  
+    </ng-container>
 </nav>

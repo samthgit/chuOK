@@ -1,15 +1,16 @@
 <header class="header">
-    <a routerLink="/main"><img class="logo-picture" src="assets/images/chuOK-logo-no-bg.png" alt="Home Logo"></a>
+    <a routerLink="/main"><img class="main-logo-picture" src="assets/images/chuOK-logo-no-bg.png" alt="Home Logo"></a>
 </header>
-<div #navToggle class="nav-toggle" (click)="toggleNav()" *ngIf="!navOpen"></div>
-<nav #navBar class="nav-bar" *ngIf="navOpen">
-    <a routerLink="/about" class="bounce-hover">
-        <img class="logo-picture" src="assets/images/pages/about.png" alt="Home Logo">
+  <nav #navBar class="nav-bar" [class.open]="navOpen" (click)="toggleNav()">
+  <ng-container *ngIf="navOpen">
+    <a routerLink="/about" class="bounce-hover" (click)="closeNav()">
+      <img class="logo-picture" src="assets/images/pages/about.png" alt="About">
     </a>
-    <a routerLink="/contact" title="Adventure Mode" class="bounce-hover">
-        <img class="logo-picture" src="assets/images/pages/contact.png" alt="Home Logo">
+    <a routerLink="/contact" class="bounce-hover" (click)="closeNav()">
+      <img class="logo-picture" src="assets/images/pages/contact.png" alt="Contact">
     </a>
-    <a routerLink="/home" title="Profile" class="bounce-hover">
-        <img class="logo-picture" src="assets/images/pages/profile.png" alt="Home Logo">
-    </a>    
+    <a routerLink="/home" class="bounce-hover" (click)="closeNav()">
+      <img class="logo-picture" src="assets/images/pages/profile.png" alt="Profile">
+    </a>
+  </ng-container>
 </nav>

@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: 'home' , component: HomeComponent }, // Home page, unique for every user
   { path: 'about', component: AboutComponent }, // About page
   { path: 'contact', component: ContactComponent }, // Contact page
-  { path: 'literature', component: LiteratureComponent }, // Literature page
-  { path: 'science', component: ScienceComponent }, // Science page
-  { path: 'nature', component: NatureComponent }, // Nature page
-  { path: 'library', component: LibraryComponent }, // Literature page with ID
-  { path: 'adventure', component: AdventureComponent }, // Science page with ID
+  { path: 'library', component: LibraryComponent }, // Library page
+  { path: 'adventure', component: AdventureComponent }, // Adventure Mode page
+  { path: 'adventure/literature', component: LiteratureComponent }, // First adventure - Literature page
+  { path: 'adventure/science', component: ScienceComponent }, // Second adventure - Science page
+  { path: 'adventure/nature', component: NatureComponent }, // Third adventure - Nature page
   { path: '**', redirectTo: '/main' } // Redirect to main for any unknown routes
 ];
 

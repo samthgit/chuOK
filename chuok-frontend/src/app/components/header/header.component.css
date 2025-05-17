@@ -8,48 +8,59 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100px; /* Explicit height */
+    height: 100px;
     padding: 10px 0;
     background-color: #f5f5f5;
     border-bottom: 1px solid #ccc;
 }
   
 .logo-picture {
-    height: 50px;      /* Fixed height to prevent overflow */
+    height: 50px;
     width: auto;
     max-height: 100%;
     object-fit: contain;
 }
 
-.nav-toggle {
-    gap: 20px; /* Space between items */
-    margin-top: 10px;
-    margin-left: 8px;
-    padding: 10px;
-    background-color: #2b2b2b;
-    border-radius: 5em;
-    width: 30px; /* Fixed width */
-    height: 30px;
-    position: fixed;
-    z-index: 999;
-}
-
-.nav-toggle:hover {
-    background-color: #424242;
-}
-
 .nav-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px; /* Space between items */
-    margin: auto;
-    margin-top: 20px;
-    padding: 5px 0;
-    background-color: #2b2b2b;
-    border-radius: 5em;
-    width: 350px; /* Fixed width */
-    /* width: 20%; */
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 999;
+  background-color: #2b2b2b;
+  border-radius: 5em;
+  margin-left: 5px;
+  width: 12px; /* collapsed width */
+  height: 320px; /* collapsed height */
+  transition: width 0.3s cubic-bezier(.68,-0.55,.27,1.55), 
+              height 0.3s cubic-bezier(.68,-0.55,.27,1.55), 
+              background 0.2s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.nav-bar.open {
+  width: 70px; /* expanded width */
+  height: auto; /* expanded height */
+  background-color: #2b2b2b;
+  cursor: default;
+  /* Optionally add a box-shadow or other effect */
+}
+
+.nav-bar a {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.nav-bar.open a {
+  opacity: 1;
+  pointer-events: auto;
+  margin: 15px 0;
 }
 
 .bounce-hover:hover {
@@ -67,4 +78,20 @@
         transform: scale(1);
     }
     
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        height: 270px; /* Adjusted collapsed height for smaller screens */
+    }
+    .logo-picture {
+        height: 40px; /* Adjusted height for smaller screens */
+    }
+    .nav-bar.open {
+        width: 50px; /* Adjusted expanded width for smaller screens */
+    }
+    .nav-bar a {
+        font-size: 14px; /* Adjusted font size for smaller screens */
+    }
+  
 }
