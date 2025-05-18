@@ -10,6 +10,9 @@ import { ScienceComponent } from './science/science.component';
 import { NatureComponent } from './nature/nature.component';
 import { LibraryComponent } from './library/library.component';
 import { AdventureComponent } from './adventure/adventure.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { PhrasesComponent } from './phrases/phrases.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -20,9 +23,11 @@ import { AdventureComponent } from './adventure/adventure.component';
     AboutComponent,
     ContactComponent,
     NotFoundComponent,
-
     LibraryComponent,
-    AdventureComponent
+    AdventureComponent,
+    ArticlesComponent,
+    PhrasesComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

@@ -50,6 +50,10 @@
     padding-bottom: 50px;
 }
 
+.section-content {
+    padding: 0 10px;
+}
+
 @media (max-width: 768px) {
     .sections {
         flex-direction: column; /* Cambia de fila a columna */

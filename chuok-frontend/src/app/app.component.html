@@ -1,7 +1,9 @@
-<ng-container [ngSwitch]="headerType">
-  <app-header *ngSwitchCase="'default'"></app-header>
-  <app-header-main *ngSwitchCase="'main'"></app-header-main>
-  <app-header-home *ngSwitchCase="'home'"></app-header-home>
-</ng-container>
+  <ng-container [ngSwitch]="headerType">
+    <app-header *ngSwitchCase="'default'"></app-header>
+    <app-header-main *ngSwitchCase="'main'"></app-header-main>
+    <app-header-home *ngSwitchCase="'home'"></app-header-home>
+    <app-header-login *ngSwitchCase="'login'"></app-header-login>
+  </ng-container>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+
+<app-footer *ngIf="!hideHeaderFooter"></app-footer>

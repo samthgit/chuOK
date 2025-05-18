@@ -16,10 +16,15 @@ export class AppComponent {
     });
   }
 
-  get headerType(): 'default' | 'main' | 'home' {
+  get headerType(): 'default' | 'main' | 'home' | 'login' {
     if (this.currentRoute.includes('/main')) return 'main';
     if (this.currentRoute.includes('/about')) return 'main';
     if (this.currentRoute.includes('/contact')) return 'main';
+    if (this.currentRoute.includes('/login')) return 'login';
     return 'default';
+  }
+
+  get hideHeaderFooter(): boolean {
+    return this.router.url === '/login';
   }
 }

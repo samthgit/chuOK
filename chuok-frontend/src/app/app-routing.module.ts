@@ -9,6 +9,9 @@ import { ScienceComponent } from './pages/science/science.component';
 import { NatureComponent } from './pages/nature/nature.component';
 import { LibraryComponent } from './pages/library/library.component';
 import { AdventureComponent } from './pages/adventure/adventure.component';
+import { ArticlesComponent } from './pages/articles/articles.component';
+import { PhrasesComponent } from './pages/phrases/phrases.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -16,7 +19,10 @@ const routes: Routes = [
   { path: 'home' , component: HomeComponent }, // Home page, unique for every user
   { path: 'about', component: AboutComponent }, // About page
   { path: 'contact', component: ContactComponent }, // Contact page
+  { path: 'login', component: LoginComponent }, // Login page
   { path: 'library', component: LibraryComponent }, // Library page
+  { path: 'library/articles', component: ArticlesComponent }, // First library section - Articles page
+  { path: 'library/phrases', component: PhrasesComponent}, // Second library section - Phrases page
   { path: 'adventure', component: AdventureComponent }, // Adventure Mode page
   { path: 'adventure/literature', component: LiteratureComponent }, // First adventure - Literature page
   { path: 'adventure/science', component: ScienceComponent }, // Second adventure - Science page
