@@ -183,11 +183,14 @@ ul {
     }
 
     .footer-social-media {
-        padding-top: 10px;
+        padding-top: 20px;
         grid-column: 1 / 2;
         grid-row: 1 / 2;
     }
 
+    .example-2 {
+      padding: 10px 0;
+    }
     .footer-links {
         grid-column: 1 / 2; 
         grid-row: 2 / 3;

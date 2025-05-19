@@ -8,6 +8,33 @@
     text-align: center;
 }
 
+.gradient-text {
+  background: linear-gradient(90deg, #6bb868, #b8689a, #6bb868);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* For Firefox */
+  color: transparent;
+  transition: background-position 0.4s;
+}
+
+.main-message:hover .gradient-text {
+  animation: gradient 4s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .main-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -16,63 +43,108 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     width: 75%;
+    background: linear-gradient(45deg, #6bb868, #b8689a, #e0e0e0);
+    overflow: hidden;
 }
 
-
-
-/* Hide all panel content by default */
-.main-content-panel-1 .panel-title,
-.main-content-panel-1 .panel-content > p,
-.main-content-panel-2 .panel-title,
-.main-content-panel-2 .panel-content > p {
-    opacity: 0;
-    transition: opacity 0.4s, transform 0.4s;
-}
-
-.main-content-panel-3 .panel-title,
-.main-content-panel-3 .panel-content > p {
+/* Hide all panels by default */
+.main-content-panel-1,
+.main-content-panel-2,
+.main-content-panel-3 {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s, transform 0.4s;
+  pointer-events: none;
+  animation: none;
 }
 
-/* Show content on hover, with staggered delays for paragraphs */
-.main-content-panel-1:hover .panel-title,
-.main-content-panel-2:hover .panel-title {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.1s;
+/* Animate panels in on hover */
+.main-content:hover .main-content-panel-1 {
+  animation: panelInLeft 1s both;
+  pointer-events: auto;
+}
+.main-content:hover .main-content-panel-2 {
+  animation: panelInRight 1s 0.6s both;
+  pointer-events: auto;
+}
+.main-content:hover .main-content-panel-3 {
+  animation: panelInUp 1s 1.2s both;
+  pointer-events: auto;
 }
 
-.main-content-panel-1:hover .panel-content > p:nth-child(1),
-.main-content-panel-1:hover .panel-content > p:nth-child(2) {
+/* Animate panels out when not hovered */
+.main-content:not(:hover) .main-content-panel-3 {
+  animation: panelOutUp 1s both;
+  pointer-events: none;
+}
+.main-content:not(:hover) .main-content-panel-2 {
+  animation: panelOutRight 1s 0.6s both;
+  pointer-events: none;
+}
+.main-content:not(:hover) .main-content-panel-1 {
+  animation: panelOutLeft 1s 1.2s both;
+  pointer-events: none;
+}
+
+@keyframes panelInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) scale(0.98);
+  }
+  100% {
     opacity: 1;
     transform: none;
-    transition-delay: 0.2s;
+  }
+}
+@keyframes panelOutLeft {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%) scale(0.98);
+  }
 }
 
-.main-content-panel-2:hover .panel-content > p:nth-child(1),
-.main-content-panel-3:hover .panel-content > p:nth-child(1) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.2s;
+@keyframes panelInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes panelOutRight {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%) scale(0.98);
+  }
 }
 
-.main-content-panel-2:hover .panel-content > p:nth-child(2),
-.main-content-panel-3:hover .panel-content > p:nth-child(2) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.4s;
+@keyframes panelInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
-.main-content-panel-2:hover .panel-content > p:nth-child(3) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.6s;
-}
-.main-content-panel-2:hover .panel-content > p:nth-child(4) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.8s;
+@keyframes panelOutUp {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%) scale(0.98);
+  }
 }
 
 .main-content-panel-1 {
@@ -136,6 +208,7 @@
     display: flex;
     flex-direction: column;
     margin: 50px 0;
+    text-align: justify;
 }
 
 .review-section .review-section-title {
@@ -155,11 +228,11 @@
     display: flex;
     flex-direction: column;
     width: 250px;
-    height: 300px;
+    height: auto;
     border-radius: 1em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 10px;
-    padding: 20px 10px;
+    padding: 20px;
     background-color: #f5f5f5;
 }
 
@@ -250,6 +323,7 @@
         /* Remove grid-specific properties if present */
         grid-column: auto;
         grid-row: auto;
+        text-align: center;
     }
 
     .panel-title {
@@ -261,7 +335,6 @@
     .panel-content {
         display: flex;
         flex-direction: column;
-        justify-content: end;
         height: 100%;
     }
 
@@ -275,88 +348,10 @@
     }
 
     /* Hide all panel content by default */
-    .main-content-panel-1 .panel-title,
-    .main-content-panel-1 .panel-content > p,
-    .main-content-panel-2 .panel-title,
-    .main-content-panel-2 .panel-content > p,
-    .main-content-panel-3 .panel-title,
-    .main-content-panel-3 .panel-content > p {
+    .main-content .main-content-panel-1,
+    .main-content .main-content-panel-2,
+    .main-content .main-content-panel-3 {
         opacity: 1;
         transition: none;
     }
 }
-
-.main-content-panel-1:hover .panel-title,
-.main-content-panel-3:hover .panel-title {
-  animation: slideInLeft 1s both;
-}
-
-.main-content-panel-1:hover .panel-content,
-.main-content-panel-2:hover .panel-content {
-  animation: slideInLeft 1s both;
-  animation-delay: 0.5s;
-}
-
-  @keyframes slideInLeft {
-  0% {
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
-  visibility: visible;
-  }
-  100% {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  }
-  } 
-
-.main-content-panel-2:hover .panel-title {
-  animation: slideInRight 1s both;
-}
-
-.main-content-panel-2:hover .panel-content > p:nth-child(1) {
-  animation: slideInLeft 1s both;
-  animation-delay: 0.5s;
-}
-.main-content-panel-2:hover .panel-content > p:nth-child(2) {
-  animation: slideInLeft 1s both;
-  animation-delay: 1s;
-}
-.main-content-panel-2:hover .panel-content > p:nth-child(3) {
-  animation: slideInLeft 1s both;
-  animation-delay: 1.5s;
-}
-.main-content-panel-2:hover .panel-content > p:nth-child(4) {
-  animation: slideInLeft 1s both;
-  animation-delay: 2s;
-}
-
-  @keyframes slideInRight {
-  0% {
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-  visibility: hidden;
-  }
-  100% {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  }
-  } 
-
-
-.main-content-panel-3:hover .panel-content {
-  animation: slideInUp 1s both;
-}
-
-  @keyframes slideInUp {
-  0% {
-  -webkit-transform: translateY(100%);
-  transform: translateY(100%);
-  visibility: visible;
-  }
-  100% {
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-  }
-  }
-
-  
