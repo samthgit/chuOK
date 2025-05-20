@@ -1,8 +1,11 @@
 <main class="main">
-  <section class="form-section">
+    <section class="about-section">
+        <a href="/main"><img class="main-logo-picture" src="assets/images/chuOK-logo-no-border-white.png" alt="Home Logo"></a>
+    </section>
+    <section class="form-section">
     
       <form class="form" (ngSubmit)="$event.preventDefault()">
-        <h1>LOG IN</h1>
+        <h1>SIGN UP</h1>
          <label>
             <input required="" placeholder="" type="email" class="input">
               <span>email</span>
@@ -13,17 +16,14 @@
           </label>
           <button class="fancy" type="button">
             <span class="top-key"></span>
-            <span class="text">log in</span>
+            <span class="text">sign up</span>
             <span class="bottom-key-1"></span>
             <span class="bottom-key-2"></span>
           </button>
       </form>
       <div class="flex-message">
-        <p>Welcome back! Please log in to your account.</p>
-        <p>Don't have an account? <a href="/signup"><span class="signup-text">Sign up</span></a></p>
+        <p>Welcome! Start your adventure here.</p>
+        <p>Already have an account? <a href="/login"><span class="signup-text">Log in</span></a></p>
       </div>
-  </section>
-  <section class="about-section">
-    <a href="/main"><img class="main-logo-picture" src="assets/images/chuOK-logo-no-border-white.png" alt="Home Logo"></a>
   </section>
 </main>

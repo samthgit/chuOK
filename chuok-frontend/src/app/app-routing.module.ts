@@ -12,6 +12,7 @@ import { AdventureComponent } from './pages/adventure/adventure.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { PhrasesComponent } from './pages/phrases/phrases.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent }, // About page
   { path: 'contact', component: ContactComponent }, // Contact page
   { path: 'login', component: LoginComponent }, // Login page
+  { path: 'signup', component: SignupComponent }, // Signup page
   { path: 'library', component: LibraryComponent }, // Library page
   { path: 'library/articles', component: ArticlesComponent }, // First library section - Articles page
   { path: 'library/phrases', component: PhrasesComponent}, // Second library section - Phrases page

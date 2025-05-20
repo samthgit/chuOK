@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -13,6 +14,7 @@ import { AdventureComponent } from './adventure/adventure.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { PhrasesComponent } from './phrases/phrases.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -27,10 +29,12 @@ import { LoginComponent } from './login/login.component';
     AdventureComponent,
     ArticlesComponent,
     PhrasesComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     LiteratureComponent,
     ScienceComponent,
     NatureComponent,

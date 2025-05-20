@@ -1,4 +1,4 @@
-  <ng-container [ngSwitch]="headerType">
+  <ng-container [ngSwitch]="headerType" *ngIf="!hideHeaderFooter">
     <app-header *ngSwitchCase="'default'"></app-header>
     <app-header-main *ngSwitchCase="'main'"></app-header-main>
     <app-header-home *ngSwitchCase="'home'"></app-header-home>

@@ -1,30 +1,33 @@
-.about-section {
+.main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+}
+
+.form-section {
     display: flex;
     flex-direction: column;
     padding: 20px;
     background-color: #fff;
-    border-radius: 0.5em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    width: 300px;
 }
 
-.about-section h1 {
+.form-section h1 {
     margin: 20px 0;
-    font-size: 2em;
+    font-size: 3em;
     color: #333;
 }
 
-/* From Uiverse.io by somshri16 */ 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 350px;
-  background-color: #fff;
-  padding: 20px;
+  gap: 20px;
+  max-width: 700px; /* Increased from 500px */
+  width: 70%; /* Ensure it stretches to max-width */
+  /* background-color: #fff; */
+  padding: 40px; /* Increased padding for a larger feel */
   border-radius: 10px;
-  position: relative;
+  margin: 40px auto; /* Add more margin for vertical space */
 }
 
 .message {
@@ -106,6 +109,11 @@
 
 .form label .input01:valid + span {
   color: green;
+}
+
+.checkbox {
+    margin-right: 5px;
+    transform: translateY(2px);
 }
 
 .fancy {
@@ -215,23 +223,67 @@
   width: 0;
 }
 
+.flex-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.signup-text {
+  color: #b8689a;
+  cursor: pointer;
+}
+
+.about-section {
+  display: flex;
+  justify-content: start;
+  background-color: #b8689a;
+  padding: 20px;
+}
+
+.main-logo-picture {
+    display: flex;
+    height: 50px;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
 @media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .form-section {
+    order: 1;
+    padding: 10px;
+  }
+
   .about-section {
-    width: 90%;
+    order: 2;
+  }
+
+  .form {
+    padding: 20px;
+    margin: 20px auto;
   }
 }
 
 @media (max-width: 480px) {
-  .about-section {
-    width: 90%;
+  .form-section h1 {
+    font-size: 2em;
   }
 
-  .fancy {
-    background: linear-gradient(90deg, #6bb868 0%, #b8689a 100%);
-    color: #fff;
-  }
-
-  .fancy .text {
-    color: #fff;
+  .form {
+    padding: 10px;
+    margin: 10px auto;
   }
 }

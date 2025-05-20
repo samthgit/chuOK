@@ -21,10 +21,11 @@ export class AppComponent {
     if (this.currentRoute.includes('/about')) return 'main';
     if (this.currentRoute.includes('/contact')) return 'main';
     if (this.currentRoute.includes('/login')) return 'login';
+    if (this.currentRoute.includes('/signup')) return 'login';
     return 'default';
   }
 
   get hideHeaderFooter(): boolean {
-    return this.router.url === '/login';
+    return this.router.url === '/login' || this.router.url === '/signup';
   }
 }

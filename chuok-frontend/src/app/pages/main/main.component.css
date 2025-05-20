@@ -4,7 +4,7 @@
     align-items: center;
     font-size: 7rem;
     font-weight: 500; 
-    margin: 150px auto;
+    margin: 200px auto;
     text-align: center;
 }
 
@@ -47,41 +47,32 @@
     overflow: hidden;
 }
 
-/* Hide all panels by default */
 .main-content-panel-1,
 .main-content-panel-2,
 .main-content-panel-3 {
   opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.6s, transform 0.6s;
   pointer-events: none;
-  animation: none;
 }
 
-/* Animate panels in on hover */
-.main-content:hover .main-content-panel-1 {
-  animation: panelInLeft 1s both;
+.main-content.show-panels .main-content-panel-1 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.1s;
   pointer-events: auto;
 }
-.main-content:hover .main-content-panel-2 {
-  animation: panelInRight 1s 0.6s both;
+.main-content.show-panels .main-content-panel-2 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.5s;
   pointer-events: auto;
 }
-.main-content:hover .main-content-panel-3 {
-  animation: panelInUp 1s 1.2s both;
+.main-content.show-panels .main-content-panel-3 {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.9s;
   pointer-events: auto;
-}
-
-/* Animate panels out when not hovered */
-.main-content:not(:hover) .main-content-panel-3 {
-  animation: panelOutUp 1s both;
-  pointer-events: none;
-}
-.main-content:not(:hover) .main-content-panel-2 {
-  animation: panelOutRight 1s 0.6s both;
-  pointer-events: none;
-}
-.main-content:not(:hover) .main-content-panel-1 {
-  animation: panelOutLeft 1s 1.2s both;
-  pointer-events: none;
 }
 
 @keyframes panelInLeft {
@@ -92,16 +83,6 @@
   100% {
     opacity: 1;
     transform: none;
-  }
-}
-@keyframes panelOutLeft {
-  0% {
-    opacity: 1;
-    transform: none;
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-100%) scale(0.98);
   }
 }
 
@@ -115,16 +96,6 @@
     transform: none;
   }
 }
-@keyframes panelOutRight {
-  0% {
-    opacity: 1;
-    transform: none;
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(100%) scale(0.98);
-  }
-}
 
 @keyframes panelInUp {
   0% {
@@ -134,16 +105,6 @@
   100% {
     opacity: 1;
     transform: none;
-  }
-}
-@keyframes panelOutUp {
-  0% {
-    opacity: 1;
-    transform: none;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(100%) scale(0.98);
   }
 }
 
