@@ -25,7 +25,11 @@ export class AppComponent {
     return 'default';
   }
 
-  get hideHeaderFooter(): boolean {
+  get hideHeader(): boolean {
     return this.router.url === '/login' || this.router.url === '/signup';
+  }
+
+  get hideFooter(): boolean {
+    return this.router.url === '/login' || this.router.url === '/signup' || this.router.url === '/user-center';
   }
 }

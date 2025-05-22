@@ -1,0 +1,81 @@
+<div class="info-container">
+    <!-- Main Content -->
+    <div class="content">
+        <div *ngIf="selectedTab === 'profile'">
+            <h2>PROFILE</h2>
+            <div class="content-box">
+                <div class="item">
+                    <div>Full Name</div>
+                    <div><input type="text"></div>
+                </div>
+                <div class="item">
+                    <div>Country</div>
+                    <div><input type="text"></div>
+                </div>
+                <div class="item">
+                    <div>Time Zone</div>
+                    <div><input type="text"></div>
+                </div>
+                <div class="item">
+                    <div>Language</div>
+                    <div><input type="text"></div>
+                </div>
+                <div>
+                    <div class="bio">Bio</div>
+                    <div><textarea name="" id=""></textarea></div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedTab === 'account'">
+            <h2>ACCOUNT</h2>
+            <div class="content-box">
+                <div class="item">
+                    <div>Username</div>
+                    <div><input type="text"></div>
+                    </div>
+                <div class="item">
+                    <div>Email</div>
+                    <div><input type="text"></div>
+                </div>
+                <div class="item">
+                    <div>Password</div>
+                    <div><input type="text"></div>
+                </div>
+                <div class="item">
+                    <div>Confirm Password</div>
+                    <div><input type="text"></div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedTab === 'settings'">
+            <h2>SETTINGS</h2>
+            <div class="content-box">
+                <div class="item">
+                    <div>Interface Language</div>
+                    <div><input type="text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Sidebar Menu -->
+    <nav class="sidebar">
+        <h1>User Center</h1>
+        <ul>
+            <li>
+                <button (click)="selectedTab = 'profile'" [class.active]="selectedTab === 'profile'">
+                    Profile
+                </button>
+            </li>
+            <li>
+                <button (click)="selectedTab = 'account'" [class.active]="selectedTab === 'account'">
+                    Account
+                </button>
+            </li>
+            <li>
+                <button (click)="selectedTab = 'settings'" [class.active]="selectedTab === 'settings'">
+                    Settings
+                </button>
+            </li>
+        </ul>
+    </nav>
+</div>

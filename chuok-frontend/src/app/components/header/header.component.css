@@ -15,7 +15,7 @@
 }
   
 .logo-picture {
-    height: 50px;
+    height: 170px;
     width: auto;
     max-height: 100%;
     object-fit: contain;
@@ -94,4 +94,17 @@
         font-size: 14px; /* Adjusted font size for smaller screens */
     }
   
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 1.5em;
+    }
+
+    .logo-picture {
+        height: 100px;
+        width: auto;
+        max-height: 100%;
+        object-fit: contain;
+    }
 }

@@ -15,7 +15,7 @@
 }
   
 .main-logo-picture {
-    height: 70px;      /* Fixed height to prevent overflow */
+    height: 170px;      /* Fixed height to prevent overflow */
     width: auto;
     max-height: 100%;
     object-fit: contain;
@@ -101,4 +101,22 @@
         font-size: 14px; /* Adjusted font size for smaller screens */
     }
   
+}
+
+@media (max-width: 480px) {
+    .nav-bar {
+        height: 150px; /* Adjusted collapsed height for smaller screens */
+    }
+    .main-logo-picture {
+        height: 100px;      /* Fixed height to prevent overflow */
+        width: auto;
+        max-height: 100%;
+        object-fit: contain;
+    }
+    .nav-bar.open {
+        width: 40px; /* Adjusted expanded width for smaller screens */
+    }
+    .nav-bar a {
+        font-size: 12px; /* Adjusted font size for smaller screens */
+    }
 }

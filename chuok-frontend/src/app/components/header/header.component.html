@@ -1,6 +1,6 @@
 <header class="header">
     <!-- The header contains the logo and the profile picture, both of which are links to different pages in the application -->
-    <a routerLink="/main"><img class="logo-picture" src="assets/images/chuOK-logo-no-bg.png" alt="Home Logo"></a>
+    <a routerLink="/main"><img class="logo-picture" src="assets/images/chuOK-logo.png" alt="Home Logo"></a>
 </header>
 <nav #navBar class="nav-bar" [class.open]="navOpen" (click)="toggleNav()">
     <ng-container *ngIf="navOpen">
@@ -14,7 +14,7 @@
         <a routerLink="/adventure" title="Adventure Mode" class="bounce-hover" (click)="closeNav()">
             <img class="logo-picture" src="assets/images/pages/adventure.png" alt="Home Logo">
         </a>
-        <a routerLink="/main" title="Profile" class="bounce-hover" (click)="closeNav()">
+        <a routerLink="/user-center" title="Profile" class="bounce-hover" (click)="closeNav()">
             <img class="logo-picture" src="assets/images/pages/profile.png" alt="Home Logo">
         </a>  
     </ng-container>

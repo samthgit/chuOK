@@ -1,4 +1,4 @@
-  <ng-container [ngSwitch]="headerType" *ngIf="!hideHeaderFooter">
+  <ng-container [ngSwitch]="headerType" *ngIf="!hideHeader">
     <app-header *ngSwitchCase="'default'"></app-header>
     <app-header-main *ngSwitchCase="'main'"></app-header-main>
     <app-header-home *ngSwitchCase="'home'"></app-header-home>
@@ -6,4 +6,4 @@
   </ng-container>
 <router-outlet></router-outlet>
 
-<app-footer *ngIf="!hideHeaderFooter"></app-footer>
+<app-footer *ngIf="!hideFooter"></app-footer>

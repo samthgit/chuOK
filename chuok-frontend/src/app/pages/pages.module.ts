@@ -30,7 +30,7 @@ import { SignupComponent } from './signup/signup.component';
     ArticlesComponent,
     PhrasesComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     CommonModule,

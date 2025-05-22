@@ -13,6 +13,7 @@ import { ArticlesComponent } from './pages/articles/articles.component';
 import { PhrasesComponent } from './pages/phrases/phrases.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent }, // Contact page
   { path: 'login', component: LoginComponent }, // Login page
   { path: 'signup', component: SignupComponent }, // Signup page
+  { path: 'user-center', component: ProfileComponent }, // Profile page, unique for every user
   { path: 'library', component: LibraryComponent }, // Library page
   { path: 'library/articles', component: ArticlesComponent }, // First library section - Articles page
   { path: 'library/phrases', component: PhrasesComponent}, // Second library section - Phrases page
