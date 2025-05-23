@@ -1,1 +1,30 @@
-<p>phrases works!</p>
+<nav class="filter">
+    <ul class="filter-list">
+        <li><button>All</button></li>
+        <li><button>Literature</button></li>
+        <li><button>Science</button></li>
+        <li><button>Nature</button></li>
+    </ul>
+</nav>
+<main class="phrases-grid">
+    <div class="phrase-card" *ngFor="let phrase of phrases; let i = index" (click)="openPhrase(i)">
+        <h2>{{ phrase.title }}</h2>
+        <p></p>
+        <p>{{ phrase.author }}</p>
+        <p>{{ phrase.date }}</p>
+    </div>
+</main>
+
+<!-- Popup Phrase Modal -->
+<div *ngIf="selectedPhraseIndex !== null" class="phrase-modal-overlay" (click)="closePhrase()">
+  <div class="phrase-modal" (click)="$event.stopPropagation()">
+    <button (click)="closePhrase()"></button>
+    <ng-container *ngIf="selectedPhraseIndex !== null">
+      <h2>{{ phrases[selectedPhraseIndex!].title }}</h2>
+      <p>{{ phrases[selectedPhraseIndex!].content }}</p>
+      <p>{{ phrases[selectedPhraseIndex!].author }}</p>
+      <p>{{ phrases[selectedPhraseIndex!].date }}</p>
+    </ng-container>
+    
+  </div>
+</div>

@@ -1,0 +1,132 @@
+.filter-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #eaeaea;
+    padding: 10px 0;
+    border-radius: 0.5em;
+    margin: 10px auto;
+    width: 95%;
+}
+
+.filter-list li {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-list li:hover {
+    background-color: #d0d0d0;
+}
+
+.filter-list li.active {
+    background-color: #b0b0b0;
+}
+
+.filter-list li button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: 1em;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 95%;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.article-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px auto;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 0.5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.article-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+}
+
+.article-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: justify;
+    background: #fff;
+    border-radius: 1em;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    padding: 40px 30px;
+    width: 600px;
+    height: 80vh;
+    overflow-y: auto;
+    z-index: 1001;
+    position: relative;
+    animation: modalIn 0.2s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.article-modal button {
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    background: #808080;
+    cursor: pointer;
+    transition: background 0.15s;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.article-modal button:hover {
+    background: #f43838
+}
+
+@media (max-width: 768px) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-list li {
+        width: 90%;
+        text-align: center;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+}
