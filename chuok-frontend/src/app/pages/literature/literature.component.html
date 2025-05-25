@@ -1,4 +1,22 @@
-<p class="literature">Literature</p>
+<nav class="filter">
+  <ul class="filter-list">
+      <li>
+          <a [routerLink]="'/adventure/literature'" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: false }">
+            Literature
+          </a>
+      </li>
+      <li>
+          <a [routerLink]="'/adventure/science'" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: false }">
+            Science
+          </a>
+      </li>
+      <li>
+          <a [routerLink]="'/adventure/nature'" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: false }">
+            Nature
+          </a>
+      </li>
+  </ul>
+</nav>
 <section class="info">
     <div class="stats-container">Last stats: 
         <p>Level: 1</p>
@@ -8,37 +26,33 @@
     </div>
 </section>
 <main class="level-path">
-    <div
-      #scrollWrapper
-      class="level-path-scroll-wrapper"
-      (mousedown)="onMouseDown($event)"
-      (mouseup)="onMouseUp()"
-      (mouseleave)="onMouseUp()"
-      (mousemove)="onMouseMove($event)"
-      (touchstart)="onTouchStart($event)"
-      (touchmove)="onTouchMove($event)"
-      (touchend)="onTouchEnd()"
-      [class.dragging]="isDragging"
-    >
-      <div class="level-path-container" style="background-image: url('assets/images/level-path-bg/sora-vert.png'); background-size: cover; background-position: center;">
-        <button *ngFor="let level of levels" class="level-button">
+      <div class="level-path-container" style="background-image: url('assets/images/level-path-bg/literature-path-bg-vert.png'); background-size: cover; background-position: center;">
+        <button *ngFor="let level of levels; let i = index" class="level-button" (click)="openLevel(i)">
           {{ level }}
         </button>
       </div>
-    </div>
   </main>
-  
-  
-<section class="level-container">
-    <div class="question">
-        <img class="logo-picture" src="assets/images/characters/literature-no-bg.png" alt="Literature Logo">
-        <p>Dicta qui temporibus deserunt distinctio officiis asperiores neque tempora. Hic ut esse et beatae beatae. Ea est sunt et quo. At autem rerum sequi cumque eum.</p>
-        <div class="answer-container">
-            <div class="answer">Answer 1</div>
-            <div class="answer">Answer 2</div>
-            <div class="answer">Answer 3</div>
-            <div class="answer">Answer 4</div>
+
+<!-- Popup Level Modal -->
+<div *ngIf="selectedLevelIndex !== null" class="level-modal-overlay" (click)="closeLevel()">
+  <div class="level-modal" (click)="$event.stopPropagation()">
+    <ng-container *ngIf="selectedLevelIndex !== null">
+      <h2>Level {{ levels[selectedLevelIndex!] }}</h2>
+      <!-- You can add more level details here -->
+      <section class="level-container">
+        <div class="question">
+            <img class="logo-picture" src="assets/images/characters/literature-no-bg.png" alt="Literature Logo">
+            <p>Dicta qui temporibus deserunt distinctio officiis asperiores neque tempora. Hic ut esse et beatae beatae. Ea est sunt et quo. At autem rerum sequi cumque eum.</p>
+            <div class="answer-container">
+                <div class="answer">Answer 1</div>
+                <div class="answer">Answer 2</div>
+                <div class="answer">Answer 3</div>
+                <div class="answer">Answer 4</div>
+            </div>
         </div>
-    </div>
-</section>
+      </section>
+    </ng-container>
+    <button (click)="closeLevel()"></button>
+  </div>
+</div>
 
