@@ -34,15 +34,30 @@
 }
 
 .literature {
-    background-color: #d6634c;
+    /* background-color: #d6634c; */
+    background: linear-gradient(
+        210deg,
+    #fa927d 0%,
+    #f33d3d 90%
+    );
 }
 
 .science {
-    background-color: #4c6bd6;
+    /* background-color: #4c6bd6; */
+        background: linear-gradient(
+        180deg,
+    #778cd6 0%,
+    #45589e 90%
+    );
 }
 
 .nature {
-    background-color: #6bb868;
+    /* background-color: #6bb868; */
+    background: linear-gradient(
+        120deg,
+    #82ed7e 0%,
+    #48b945 90%
+    );
 }
 
 .section-title {

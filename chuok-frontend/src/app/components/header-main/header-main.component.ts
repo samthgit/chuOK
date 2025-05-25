@@ -1,6 +1,7 @@
-import { Component, ElementRef, HostListener, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header-main',
@@ -9,24 +10,32 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./header-main.component.css']
 })
 export class HeaderMainComponent implements OnInit, OnDestroy {
-  navOpen = false;
+navOpen = false;
 
   @ViewChild('navBar') navBar!: ElementRef;
   private routerEventsSub!: Subscription;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit(): void {
-    // Cierra el menú al cambiar de ruta
     this.routerEventsSub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.navOpen = false;
+        if (isPlatformBrowser(this.platformId)) {
+          // Only scroll to top in the browser environment
+          window.scrollTo(0, 0);
+        }
+        
+        setTimeout(() => {
+          this.navOpen = false;
+        }, 0);
       }
     });
   }
 
   ngOnDestroy(): void {
-    // Limpia la suscripción para evitar fugas de memoria
     if (this.routerEventsSub) {
       this.routerEventsSub.unsubscribe();
     }

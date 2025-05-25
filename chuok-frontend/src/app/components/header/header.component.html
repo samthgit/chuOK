@@ -5,16 +5,16 @@
 <nav #navBar class="nav-bar" [class.open]="navOpen" (click)="toggleNav()">
     <ng-container *ngIf="navOpen">
         <!-- The navigation links are wrapped in a list for better styling and accessibility -->
-        <a routerLink="/home" title="Articles & Phrases" class="bounce-hover" (click)="closeNav()">
+        <a routerLink="/home" title="Home" class="bounce-hover" (click)="closeNav()">
             <img class="logo-picture" src="assets/images/pages/home.png" alt="Home Logo">
         </a>
-        <a routerLink="/library" title="Articles & Phrases" class="bounce-hover" (click)="closeNav()">
+        <a routerLink="/library" title="Library" class="bounce-hover" (click)="closeNav()">
             <img class="logo-picture" src="assets/images/pages/library.png" alt="Home Logo">
         </a>
         <a routerLink="/adventure" title="Adventure Mode" class="bounce-hover" (click)="closeNav()">
             <img class="logo-picture" src="assets/images/pages/adventure.png" alt="Home Logo">
         </a>
-        <a routerLink="/user-center" title="Profile" class="bounce-hover" (click)="closeNav()">
+        <a routerLink="/user-center" title="User Center" class="bounce-hover" (click)="closeNav()">
             <img class="logo-picture" src="assets/images/pages/user-center.png" alt="Home Logo">
         </a>  
     </ng-container>

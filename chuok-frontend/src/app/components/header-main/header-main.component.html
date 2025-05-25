@@ -3,14 +3,14 @@
 </header>
   <nav #navBar class="nav-bar" [class.open]="navOpen" (click)="toggleNav()">
   <ng-container *ngIf="navOpen">
-    <a routerLink="/about" class="bounce-hover" (click)="closeNav()">
+    <a routerLink="/about" class="bounce-hover" (click)="closeNav()" title="About">
       <img class="logo-picture" src="assets/images/pages/about.png" alt="About">
     </a>
-    <a routerLink="/contact" class="bounce-hover" (click)="closeNav()">
+    <a routerLink="/contact" class="bounce-hover" (click)="closeNav()" title="Contact">
       <img class="logo-picture" src="assets/images/pages/contact.png" alt="Contact">
     </a>
-    <a routerLink="/login" class="bounce-hover" (click)="closeNav()">
-      <img class="logo-picture" src="assets/images/pages/profile.png" alt="Profile">
+    <a routerLink="/login" class="bounce-hover" (click)="closeNav()" title="Login">
+      <img class="logo-picture" src="assets/images/pages/login.png" alt="Profile">
     </a>
   </ng-container>
 </nav>

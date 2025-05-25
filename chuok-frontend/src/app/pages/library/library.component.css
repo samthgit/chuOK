@@ -35,11 +35,21 @@
 }
 
 .articles-phrases {
-    background-color: #6bb868;
+    /* background-color: #6bb868; */
+    background: linear-gradient(
+        210deg,
+    #82ed7e 0%,
+    #48b945 90%
+  );
 }
 
 .adventure-mode {
-    background-color: #d6634c;
+    /* background-color: #b8689a; */
+    background: linear-gradient(
+        150deg,
+    #e993c8 0%,
+    #a45d89 90%
+  );
 }
 
 .section-title {
