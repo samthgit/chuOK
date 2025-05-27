@@ -17,7 +17,7 @@ public class World {
 
     private String name;
 
-    private int order;
+    private int orderIndex;
 
     @OneToMany(mappedBy = "world")
     private Set<Level> levels;
