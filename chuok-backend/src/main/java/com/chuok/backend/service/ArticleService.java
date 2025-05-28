@@ -17,4 +17,26 @@ public class ArticleService {
     public List<Article> getAllArticles() {
         return articleRepository.findAll();
     }
+
+    public Article getArticleById(Long id) {
+        return articleRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Article not found with id " + id));
+    }
+
+    public Article createArticle(Article article) {
+        return articleRepository.save(article);
+    }
+
+    public Article updateArticle(Long id, Article updatedArticle) {
+        Article existing = getArticleById(id);
+        existing.setTitle(updatedArticle.getTitle());
+        existing.setContent(updatedArticle.getContent());
+        existing.setAuthor(updatedArticle.getAuthor());
+        existing.setDate(updatedArticle.getDate());
+        return articleRepository.save(existing);
+    }
+
+    public void deleteArticle(Long id) {
+        articleRepository.deleteById(id);
+    }
 }

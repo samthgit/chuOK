@@ -2,6 +2,8 @@ package com.chuok.backend.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
+
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +17,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Role name required")
     private String name;
 
     @OneToMany(mappedBy = "role")

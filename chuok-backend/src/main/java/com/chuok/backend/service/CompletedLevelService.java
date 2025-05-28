@@ -17,4 +17,25 @@ public class CompletedLevelService {
     public List<CompletedLevel> getAllCompletedLevels() {
         return completedLevelRepository.findAll();
     }
+
+    public CompletedLevel getCompletedLevelById(Long id) {
+        return completedLevelRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Completed level not found with id " + id));
+    }
+
+    public CompletedLevel createCompletedLevel(CompletedLevel cl) {
+        return completedLevelRepository.save(cl);
+    }
+
+    public CompletedLevel updateCompletedLevel(Long id, CompletedLevel updated) {
+        CompletedLevel existing = getCompletedLevelById(id);
+        existing.setDate(updated.getDate());
+        existing.setUser(updated.getUser());
+        existing.setLevel(updated.getLevel());
+        return completedLevelRepository.save(existing);
+    }
+
+    public void deleteCompletedLevel(Long id) {
+        completedLevelRepository.deleteById(id);
+    }
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -18,7 +17,6 @@ import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
-    MainComponent,
     HomeComponent,
     AboutComponent,
     ContactComponent,

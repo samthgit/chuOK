@@ -17,4 +17,24 @@ public class WorldService {
     public List<World> getAllWorlds() {
         return worldRepository.findAll();
     }
+
+    public World getWorldById(Long id) {
+        return worldRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("World not found with id " + id));
+    }
+
+    public World createWorld(World world) {
+        return worldRepository.save(world);
+    }
+
+    public World updateWorld(Long id, World updated) {
+        World existing = getWorldById(id);
+        existing.setName(updated.getName());
+        existing.setOrderIndex(updated.getOrderIndex());
+        return worldRepository.save(existing);
+    }
+
+    public void deleteWorld(Long id) {
+        worldRepository.deleteById(id);
+    }
 }

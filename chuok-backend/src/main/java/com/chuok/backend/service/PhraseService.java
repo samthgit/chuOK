@@ -17,4 +17,25 @@ public class PhraseService {
     public List<Phrase> getAllPhrases() {
         return phraseRepository.findAll();
     }
+
+    public Phrase getPhraseById(Long id) {
+        return phraseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Phrase not found with id " + id));
+    }
+
+    public Phrase createPhrase(Phrase phrase) {
+        return phraseRepository.save(phrase);
+    }
+
+    public Phrase updatePhrase(Long id, Phrase updated) {
+        Phrase existing = getPhraseById(id);
+        existing.setTitle(updated.getTitle());
+        existing.setContent(updated.getContent());
+        existing.setDate(updated.getDate());
+        return phraseRepository.save(existing);
+    }
+
+    public void deletePhrase(Long id) {
+        phraseRepository.deleteById(id);
+    }
 }

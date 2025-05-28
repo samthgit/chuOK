@@ -1,6 +1,7 @@
 package com.chuok.backend.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +25,6 @@ public class CompletedLevel {
     @JoinColumn(name = "level_id")
     private Level level;
 
+    @NotBlank(message = "Date required")
     private LocalDate date;
-
 }
