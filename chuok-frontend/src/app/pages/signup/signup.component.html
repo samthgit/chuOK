@@ -2,32 +2,37 @@
     <section class="about-section">
         <a href="/main"><img class="main-logo-picture" src="assets/images/chuOK-logo-no-border-white.png" alt="Home Logo"></a>
     </section>
-    <section class="form-section">
-    
-      <form class="form" (ngSubmit)="$event.preventDefault()">
-        <h1>SIGN UP</h1>
-          <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>username</span>
-          </label>
-         <label>
-            <input required="" placeholder="" type="email" class="input">
-              <span>email</span>
-          </label>
-          <label>
-            <input required="" placeholder="" type="password" class="input">
-              <span>password</span>
-          </label>
-          <button class="fancy" type="button">
-            <span class="top-key"></span>
-            <span class="text">sign up</span>
-            <span class="bottom-key-1"></span>
-            <span class="bottom-key-2"></span>
-          </button>
-      </form>
+  <section class="form-section">
+    <form class="form" (ngSubmit)="onSubmit()">
+      <h1>SIGN UP</h1>
+
+      <label>
+        <input required type="text" class="input" [(ngModel)]="username" name="username" />
+        <span>username</span>
+      </label>
+
+      <label>
+        <input required type="email" class="input" [(ngModel)]="email" name="email" />
+        <span>email</span>
+      </label>
+
+      <label>
+        <input required type="password" class="input" [(ngModel)]="password" name="password" />
+        <span>password</span>
+      </label>
+
+      <button class="fancy" type="submit">
+        <span class="top-key"></span>
+        <span class="text">sign up</span>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+      </button>
+
+      <div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
       <div class="flex-message">
         <p>Welcome! Start your adventure here.</p>
         <p>Already have an account? <a href="/login"><span class="signup-text">Log in</span></a></p>
       </div>
+    </form>
   </section>
 </main>

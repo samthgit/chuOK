@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, ViewChild, OnInit, OnDestroy, Inje
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private routerEventsSub!: Subscription;
 
   constructor(
+    private authService: AuthService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
@@ -57,5 +59,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.navBar && !this.navBar.nativeElement.contains(target)) {
       this.navOpen = false;
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.closeNav(); // Cierra el menú
+    this.router.navigate(['/login']);
   }
 }

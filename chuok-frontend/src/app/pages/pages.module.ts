@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -23,15 +24,16 @@ import { SignupComponent } from './signup/signup.component';
     NotFoundComponent,
     LibraryComponent,
     AdventureComponent,
-    LoginComponent,
-    SignupComponent,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule,
     LiteratureComponent,
     ScienceComponent,
     NatureComponent,
+    LoginComponent,
+    SignupComponent,
   ]
 })
 export class PagesModule { }

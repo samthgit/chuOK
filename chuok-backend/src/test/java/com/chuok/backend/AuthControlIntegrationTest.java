@@ -29,29 +29,31 @@ public class AuthControlIntegrationTest {
 
     @Test
     public void testRegisterAndLogin() throws Exception {
-        // 1. Crear registro
+        // Generar email único para evitar conflictos
+        String uniqueEmail = "test" + System.currentTimeMillis() + "@example.com";
+
+        // 1. Crear registro con email único
         RegisterRequest registerRequest = new RegisterRequest();
         registerRequest.setUsername("testuser");
-        registerRequest.setEmail("testuser@example.com");
+        registerRequest.setEmail(uniqueEmail);
         registerRequest.setPassword("password123");
 
         mockMvc.perform(post("/api/auth/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(registerRequest)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.token").exists());  // Se espera token en respuesta
+                .andExpect(jsonPath("$.token").exists());
 
-        // 2. Intentar login con el usuario creado
+        // 2. Intentar login con el usuario creado usando el mismo email único
         AuthRequest loginRequest = new AuthRequest();
-        loginRequest.setEmail("testuser@example.com");
+        loginRequest.setEmail(uniqueEmail);
         loginRequest.setPassword("password123");
 
-        mockMvc.perform(post("/api/auth/register")
+        mockMvc.perform(post("/api/auth/login")  // Corregí endpoint a login
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"testuser\",\"email\":\"testuser@example.com\",\"password\":\"password123\"}"))
-                .andDo(print()) // Esto imprime toda la respuesta en consola
+                        .content(objectMapper.writeValueAsString(loginRequest)))
+                .andDo(print())
                 .andExpect(status().isOk());
-
     }
 
     @Autowired

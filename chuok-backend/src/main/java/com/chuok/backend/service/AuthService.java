@@ -47,24 +47,31 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email is already in use");
+        try {
+            if (userRepository.existsByEmail(request.getEmail())) {
+                throw new RuntimeException("Email is already in use");
+            }
+
+            Role userRole = roleRepository.findByName("USER")
+                    .orElseThrow(() -> new RuntimeException("Default role not found"));
+
+            User user = new User();
+            user.setName(request.getUsername());
+            user.setEmail(request.getEmail());
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+            user.setRole(userRole);
+
+            userRepository.save(user);
+
+            UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
+            String token = jwtUtil.generateToken(userDetails.getUsername());
+
+            return new AuthResponse(token);
+        } catch (Exception e) {
+            // Log detallado
+            e.printStackTrace();  // <-- Esto imprimirá la causa exacta en consola
+            throw new RuntimeException("Register failed: " + e.getMessage(), e);
         }
-
-        Role userRole = roleRepository.findByName("USER")
-                .orElseThrow(() -> new RuntimeException("Default role not found"));
-
-        User user = new User();
-        user.setName(request.getUsername());
-        user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(userRole);
-
-        userRepository.save(user);
-
-        UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
-        String token = jwtUtil.generateToken(userDetails.getUsername());
-
-        return new AuthResponse(token);
     }
+
 }
