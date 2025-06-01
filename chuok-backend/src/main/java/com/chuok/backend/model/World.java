@@ -1,9 +1,12 @@
 package com.chuok.backend.model;
 
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +23,9 @@ public class World {
     @NotBlank(message = "World name is required")
     private String name;
 
-    @NotBlank(message = "World order is required")
+    @NotNull(message = "World order is required")
     private int orderIndex;
 
-    @OneToMany(mappedBy = "world")
-    private Set<Level> levels;
+    @OneToMany(mappedBy = "world", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Level> levels = new HashSet<>();
 }

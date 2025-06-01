@@ -21,7 +21,7 @@ interface LoginRequest {
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/api/auth'; // Cambia el puerto si usas otro
+  private baseUrl = 'http://localhost:8080/api/auth'; 
 
   private tokenKey = 'auth_token';
 

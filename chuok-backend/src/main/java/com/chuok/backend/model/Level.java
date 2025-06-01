@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public class Level {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Level number required")
+    @NotNull(message = "Level number required")
     private int levelNumber;
 
     @NotBlank(message = "Content required")
@@ -32,7 +33,7 @@ public class Level {
     @NotBlank(message = "Option 4 required")
     private String option4;
 
-    @NotBlank(message = "Correct option index required")
+    @NotNull(message = "Correct option index required")
     private int correctIndex;
 
     @ManyToOne

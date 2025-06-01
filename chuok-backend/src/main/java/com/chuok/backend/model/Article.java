@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +30,6 @@ public class Article {
     @NotBlank(message = "Author required")
     private String author;
 
-    @NotBlank(message = "Date required")
+    @NotNull(message = "Date required")
     private LocalDate date;
 }
