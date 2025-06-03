@@ -27,5 +27,5 @@ public class CompletedLevel {
     private Level level;
 
     @NotNull(message = "Date required")
-    private LocalDate date;
+    private LocalDate completionDate = LocalDate.now();
 }

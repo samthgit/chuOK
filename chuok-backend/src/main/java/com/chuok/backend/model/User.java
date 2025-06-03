@@ -1,6 +1,8 @@
 package com.chuok.backend.model;
 
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.validation.constraints.NotBlank;
@@ -40,5 +42,5 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    private Set<CompletedLevel> completedLevels;
+    private Set<CompletedLevel> completedLevels = new HashSet<>();
 }

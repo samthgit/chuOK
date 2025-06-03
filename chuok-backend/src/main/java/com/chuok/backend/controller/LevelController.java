@@ -1,8 +1,12 @@
 package com.chuok.backend.controller;
 
 import com.chuok.backend.model.Level;
+import com.chuok.backend.security.CustomUserDetails;
 import com.chuok.backend.service.LevelService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,5 +49,31 @@ public class LevelController {
     @DeleteMapping("/{id}")
     public void deleteLevel(@PathVariable Long id) {
         levelService.deleteLevel(id);
+    }
+
+    @GetMapping("/byWorld")
+    public ResponseEntity<List<Level>> getLevelsByWorldId(@RequestParam Long worldId) {
+        List<Level> levels = levelService.findByWorldId(worldId);
+        return ResponseEntity.ok(levels);
+    }
+
+    @PostMapping("/{levelId}/complete")
+    public ResponseEntity<?> markLevelAsCompleted(
+            @PathVariable Long levelId,
+            @AuthenticationPrincipal CustomUserDetails userDetails
+    ) {
+        // Cast to your custom UserDetails implementation if needed
+        String email = userDetails.getUsername(); // In JWT, username is typically the email
+        levelService.markLevelAsCompleted(levelId, email);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/completed")
+    public ResponseEntity<List<Level>> getCompletedLevels(
+            @AuthenticationPrincipal UserDetails userDetails
+    ) {
+        String email = userDetails.getUsername();
+        List<Level> completedLevels = levelService.getCompletedLevels(email);
+        return ResponseEntity.ok(completedLevels);
     }
 }

@@ -1,6 +1,10 @@
 package com.chuok.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.validation.constraints.NotBlank;
@@ -41,5 +45,7 @@ public class Level {
     private World world;
 
     @OneToMany(mappedBy = "level")
-    private Set<CompletedLevel> completedLevels;
+    @JsonIgnore
+    private List<CompletedLevel> completedLevels;
+
 }

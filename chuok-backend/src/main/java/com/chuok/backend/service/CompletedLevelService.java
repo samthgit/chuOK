@@ -29,7 +29,7 @@ public class CompletedLevelService {
 
     public CompletedLevel updateCompletedLevel(Long id, CompletedLevel updated) {
         CompletedLevel existing = getCompletedLevelById(id);
-        existing.setDate(updated.getDate());
+        existing.setCompletionDate(updated.getCompletionDate());
         existing.setUser(updated.getUser());
         existing.setLevel(updated.getLevel());
         return completedLevelRepository.save(existing);

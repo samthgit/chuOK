@@ -27,8 +27,13 @@
 </section>
 <main class="level-path">
       <div class="level-path-container" style="background-image: url('assets/images/level-path-bg/nature-path-bg-vert.png'); background-size: cover; background-position: center;">
-        <button *ngFor="let level of levels; let i = index" class="level-button" (click)="openLevel(i)">
-          {{ level }}
+        <button
+          *ngFor="let level of levels; let i = index" 
+          class="level-button" 
+          [class.completed]="isLevelCompleted(level.id)" 
+          [disabled]="isLevelCompleted(level.id)" 
+          (click)="openLevel(i)"> 
+          {{ level.levelNumber }}
         </button>
       </div>
   </main>
@@ -37,17 +42,22 @@
 <div *ngIf="selectedLevelIndex !== null" class="level-modal-overlay" (click)="closeLevel()">
   <div class="level-modal" (click)="$event.stopPropagation()">
     <ng-container *ngIf="selectedLevelIndex !== null">
-      <h2>Level {{ levels[selectedLevelIndex!] }}</h2>
+      <h2>Level {{ levels[selectedLevelIndex!].levelNumber }}</h2>
       <!-- You can add more level details here -->
       <section class="level-container">
         <div class="question">
             <img class="logo-picture" src="assets/images/characters/nature-no-bg.png" alt="Nature Logo">
-            <p>Dicta qui temporibus deserunt distinctio officiis asperiores neque tempora. Hic ut esse et beatae beatae. Ea est sunt et quo. At autem rerum sequi cumque eum.</p>
+            <p>{{ levels[selectedLevelIndex!].question }}</p>
             <div class="answer-container">
-                <div class="answer">Answer 1</div>
-                <div class="answer">Answer 2</div>
-                <div class="answer">Answer 3</div>
-                <div class="answer">Answer 4</div>
+              <div
+                *ngFor="let option of [levels[selectedLevelIndex!].option1, levels[selectedLevelIndex!].option2, levels[selectedLevelIndex!].option3, levels[selectedLevelIndex!].option4]; let i = index"
+                class="answer"
+                [class.correct]="selectedAnswerIndex === i &&isAnswerCorrect"
+                [class.incorrect]="selectedAnswerIndex === i && isAnswerCorrect === false"
+                (click)="checkAnswer(levels[selectedLevelIndex!], i)"
+              >
+                {{ option }}
+              </div>
             </div>
         </div>
       </section>

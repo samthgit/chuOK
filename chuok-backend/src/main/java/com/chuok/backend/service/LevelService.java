@@ -1,17 +1,29 @@
 package com.chuok.backend.service;
 
+import com.chuok.backend.model.CompletedLevel;
 import com.chuok.backend.model.Level;
+import com.chuok.backend.model.User;
+import com.chuok.backend.repository.CompletedLevelRepository;
 import com.chuok.backend.repository.LevelRepository;
+import com.chuok.backend.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class LevelService {
     private final LevelRepository levelRepository;
+    private final UserRepository userRepository;
+    private final CompletedLevelRepository completedLevelRepository;
 
-    public LevelService(LevelRepository levelRepository) {
+    public LevelService(LevelRepository levelRepository,
+                        UserRepository userRepository,
+                        CompletedLevelRepository completedLevelRepository) {
         this.levelRepository = levelRepository;
+        this.userRepository = userRepository;
+        this.completedLevelRepository = completedLevelRepository;
     }
 
     public List<Level> getAllLevels() {
@@ -43,4 +55,38 @@ public class LevelService {
     public void deleteLevel(Long id) {
         levelRepository.deleteById(id);
     }
+
+    public List<Level> findByWorldId(Long worldId) {
+        return levelRepository.findByWorld_Id(worldId);
+    }
+
+    @Transactional
+    public List<Level> getCompletedLevels(String email) {
+        return completedLevelRepository.findCompletedLevelsByUserEmail(email);
+    }
+
+    public void markLevelAsCompleted(Long levelId, String userEmail) {
+        // Check if it's already completed
+        boolean alreadyCompleted = completedLevelRepository.existsByUserEmailAndLevelId(userEmail, levelId);
+        if (alreadyCompleted) {
+            return;
+        }
+
+        // Load user and level
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Level level = levelRepository.findById(levelId)
+                .orElseThrow(() -> new RuntimeException("Level not found"));
+
+        // Create and save CompletedLevel
+        CompletedLevel completed = new CompletedLevel();
+        completed.setUser(user);
+        completed.setLevel(level);
+        completed.setCompletionDate(LocalDate.now());
+
+        completedLevelRepository.save(completed);
+    }
+
+
 }

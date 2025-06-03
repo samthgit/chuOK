@@ -1,8 +1,10 @@
 package com.chuok.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.validation.constraints.NotBlank;
@@ -26,6 +28,7 @@ public class World {
     @NotNull(message = "World order is required")
     private int orderIndex;
 
-    @OneToMany(mappedBy = "world", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Level> levels = new HashSet<>();
+    @OneToMany(mappedBy = "world")
+    @JsonIgnore // ⬅️ Breaks the loop
+    private List<Level> levels;
 }

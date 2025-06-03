@@ -67,6 +67,10 @@
   height: 75px;
 }
 
+.level-button.completed {
+  background-color: #74ba74; /* light green for completed */
+  cursor: default;
+}
 
 .question {
     /* background-color: #faf2e2; */
@@ -101,7 +105,7 @@
     height: auto;
 }
 
-.answer {
+/* .answer {
     border: #178d13 1px solid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     display: flex;
@@ -116,6 +120,23 @@
     text-align: center;
     border-radius: 0.5em;
     cursor: pointer;
+} */
+
+.answer {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.answer.correct {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.answer.incorrect {
+  background-color: #f44336; /* Red */
+  color: white;
 }
 
 .level-modal-overlay {
