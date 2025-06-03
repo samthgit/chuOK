@@ -1,0 +1,6 @@
+<div *ngFor="let game of games">
+  <div *ngIf="game.id === currentGameId">
+    <h2>{{ game.title }}</h2>
+    <p>{{ game.content }}</p>
+  </div>
+</div>

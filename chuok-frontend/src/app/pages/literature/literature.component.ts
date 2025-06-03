@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LevelService, Level } from '../../services/level.service';
+import { LevelService, Level, CompletedLevel } from '../../services/level.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -17,17 +17,22 @@ export class LiteratureComponent implements OnInit {
   completedLevels: number[] = [];
   selectedAnswerIndex: number | null = null;
   isAnswerCorrect: boolean | null = null;
+  userStats: CompletedLevel[] = [];
 
   constructor(private levelService: LevelService) {}
 
   ngOnInit() {
     this.loadLevels();
     this.loadCompletedLevels();
+    this.loadStats();
   }
 
   loadLevels() {
     this.levelService.getLevelsByWorldId(this.worldId).subscribe({
-      next: (levels) => this.levels = levels,
+      next: (levels) => {
+        console.log('Loaded levels:', levels);
+        this.levels = levels;
+      },
       error: (err) => {
         console.error('Error loading levels', err);
         alert(JSON.stringify(err.error));
@@ -80,5 +85,15 @@ export class LiteratureComponent implements OnInit {
 
   isLevelCompleted(levelId: number): boolean {
     return this.completedLevels.includes(levelId);
+  }
+
+  loadStats() {
+    this.levelService.getUserStats().subscribe({
+      next: (stats) => {
+        console.log('Stats:', stats);
+        this.userStats = stats;
+      },
+      error: (err) => console.error('Failed to load stats', err)
+    });
   }
 }

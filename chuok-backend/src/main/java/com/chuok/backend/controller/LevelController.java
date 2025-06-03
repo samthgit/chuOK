@@ -1,5 +1,7 @@
 package com.chuok.backend.controller;
 
+import com.chuok.backend.dto.CompletedLevelDTO;
+import com.chuok.backend.model.CompletedLevel;
 import com.chuok.backend.model.Level;
 import com.chuok.backend.security.CustomUserDetails;
 import com.chuok.backend.service.LevelService;
@@ -76,4 +78,17 @@ public class LevelController {
         List<Level> completedLevels = levelService.getCompletedLevels(email);
         return ResponseEntity.ok(completedLevels);
     }
+
+    @GetMapping("/stats")
+    public ResponseEntity<List<CompletedLevelDTO>> getUserStats(@AuthenticationPrincipal UserDetails userDetails) {
+        String email = userDetails.getUsername();
+        List<CompletedLevel> completions = levelService.getUserStats(email);
+
+        List<CompletedLevelDTO> dtos = completions.stream()
+                .map(CompletedLevelDTO::from)
+                .toList();
+
+        return ResponseEntity.ok(dtos);
+    }
+
 }

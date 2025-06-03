@@ -13,6 +13,9 @@ import { LibraryComponent } from './library/library.component';
 import { AdventureComponent } from './adventure/adventure.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { PublicArticlesComponent } from './public-articles/public-articles.component';
+import { PublicGamesComponent } from './public-games/public-games.component';
+import { PublicGuidesComponent } from './public-guides/public-guides.component';
 
 
 
@@ -24,6 +27,9 @@ import { SignupComponent } from './signup/signup.component';
     NotFoundComponent,
     LibraryComponent,
     AdventureComponent,
+    PublicArticlesComponent,
+    PublicGamesComponent,
+    PublicGuidesComponent,
   ],
   imports: [
     CommonModule,

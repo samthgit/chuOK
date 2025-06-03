@@ -88,5 +88,7 @@ public class LevelService {
         completedLevelRepository.save(completed);
     }
 
-
+    public List<CompletedLevel> getUserStats(String email) {
+        return completedLevelRepository.findAllByUserEmailOrderByCompletionDateDesc(email);
+    }
 }

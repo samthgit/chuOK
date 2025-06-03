@@ -19,6 +19,12 @@ export interface Level {
   completedLevels: any[];
 }
 
+export interface CompletedLevel {
+  id: number;
+  completionDate: string;
+  level: Level;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -51,5 +57,11 @@ export class LevelService {
         {},
         { withCredentials: true }
       );
+    }
+
+    getUserStats(): Observable<CompletedLevel[]> {
+      return this.http.get<CompletedLevel[]>(`${this.baseUrl}/stats`, {
+        withCredentials: true
+      });
     }
 }

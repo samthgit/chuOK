@@ -16,4 +16,7 @@ public interface CompletedLevelRepository extends JpaRepository<CompletedLevel, 
 
     @Query("SELECT cl.level FROM CompletedLevel cl WHERE cl.user.email = :email")
     List<Level> findCompletedLevelsByUserEmail(@Param("email") String email);
+
+    @Query("SELECT cl FROM CompletedLevel cl WHERE cl.user.email = :email ORDER BY cl.completionDate DESC")
+    List<CompletedLevel> findAllByUserEmailOrderByCompletionDateDesc(@Param("email") String email);
 }
