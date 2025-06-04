@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'public-articles/:id', component: PublicArticlesComponent },
-  { path: 'public-games/:id', component: PublicGamesComponent },
+  { path: 'public-games/:id', component: PublicGamesComponent},
 
   // Protected routes
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },

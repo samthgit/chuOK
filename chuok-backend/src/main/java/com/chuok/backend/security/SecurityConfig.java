@@ -42,6 +42,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/levels/**").permitAll()
                         .requestMatchers("/api/worlds/**").permitAll()
                         .requestMatchers("/api/completed-levels/**").permitAll()
+                        .requestMatchers("/api/articles/**").permitAll()
+                        .requestMatchers("/api/phrases/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -1,6 +1,18 @@
 <div *ngFor="let article of articles">
-  <div *ngIf="article.id === currentArticleId">
-    <h2>{{ article.title }}</h2>
-    <p>{{ article.content }}</p>
+  <div *ngIf="article.id === currentArticleId" >
+    <div class="article-container">
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.content }}</p>
+    </div>
+    <!-- Mensaje dinámico al final del artículo -->
+    <div class="article-end-message">
+      <ng-container *ngIf="!isLoggedIn; else loggedInMessage">
+        <p>Did you like it? <strong>Sign up</strong> to access more interesting content!</p>
+        <button routerLink="/signup" class="register-button">Sign Up</button>
+      </ng-container>
+      <ng-template #loggedInMessage>
+        <p>Thank you for being with us 🧘‍♀️ Happy reading!</p>
+      </ng-template>
+    </div>
   </div>
 </div>

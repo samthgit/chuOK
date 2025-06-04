@@ -81,8 +81,8 @@
     border-radius: 1em;
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     padding: 40px 30px;
-    width: 600px;
-    height: 80vh;
+    width: 500px;
+    height: 40vh;
     overflow-y: auto;
     z-index: 1001;
     position: relative;
@@ -129,5 +129,10 @@
 
     .phrases-grid {
         grid-template-columns: 1fr;
+    }
+
+    .phrase-modal {
+        width: 95%;
+        margin: 10px auto;
     }
 }

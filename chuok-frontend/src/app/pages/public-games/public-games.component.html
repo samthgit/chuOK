@@ -1,6 +1,67 @@
-<div *ngFor="let game of games">
-  <div *ngIf="game.id === currentGameId">
-    <h2>{{ game.title }}</h2>
-    <p>{{ game.content }}</p>
+<!-- Mostrar la pregunta solo si no ha terminado -->
+<div *ngIf="!gameFinished">
+  <div *ngFor="let game of games">
+    <div *ngIf="game.id === currentGameId" class="question">
+      <h2>{{ game.title }}</h2>
+      <p>{{ game.question }}</p>
+      <div class="answer-container">
+        <div
+          class="answer"
+          [ngClass]="{
+            'answer-correct': answerStatus[game.answer1] === 'correct',
+            'answer-incorrect': answerStatus[game.answer1] === 'incorrect'
+          }"
+          (click)="selectAnswer(game.answer1)">
+          {{ game.answer1 }}
+        </div>
+        <div
+          class="answer"
+          [ngClass]="{
+            'answer-correct': answerStatus[game.answer2] === 'correct',
+            'answer-incorrect': answerStatus[game.answer2] === 'incorrect'
+          }"
+          (click)="selectAnswer(game.answer2)">
+          {{ game.answer2 }}
+        </div>
+        <div
+          class="answer"
+          [ngClass]="{
+            'answer-correct': answerStatus[game.answer3] === 'correct',
+            'answer-incorrect': answerStatus[game.answer3] === 'incorrect'
+          }"
+          (click)="selectAnswer(game.answer3)">
+          {{ game.answer3 }}
+        </div>
+        <div
+          class="answer"
+          [ngClass]="{
+            'answer-correct': answerStatus[game.answer4] === 'correct',
+            'answer-incorrect': answerStatus[game.answer4] === 'incorrect'
+          }"
+          (click)="selectAnswer(game.answer4)">
+          {{ game.answer4 }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- Mensaje final -->
+<div *ngIf="gameFinished" class="game-finished">
+  <h2>You finished the game!</h2>
+
+  <ng-container *ngIf="!isLoggedIn; else alreadyLoggedIn">
+    <p>Sign up form more content, challenges and surprises.</p>
+    <button class="register-button" routerLink="/signup">Sign up</button>
+  </ng-container>
+
+  <ng-template #alreadyLoggedIn>
+    <p><br>Thanks for using chuOK! 😊</p>
+    <p>We hope you enjoyed the game.</p>
+    <div class="button-container">
+      <button class="register-button" routerLink="/library">To library</button>
+      <button class="register-button" routerLink="/adventure">To Adventure</button>
+    </div>
+  </ng-template>
+</div>
+

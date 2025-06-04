@@ -1,18 +1,9 @@
-<nav class="filter">
-    <ul class="filter-list">
-        <li><button>All</button></li>
-        <li><button>Literature</button></li>
-        <li><button>Science</button></li>
-        <li><button>Nature</button></li>
-    </ul>
-</nav>
 <main class="articles-grid">
-    <div class="article-card" *ngFor="let article of articles; let i = index" (click)="openArticle(i)">
-        <h2>{{ article.title }}</h2>
-        <p></p>
-        <p>{{ article.author }}</p>
-        <p>{{ article.date }}</p>
-    </div>
+  <div class="article-card" *ngFor="let article of articles; let i = index" (click)="openArticle(i)">
+    <h4>{{ article.title }}</h4>
+    <p>{{ article.author }}</p>
+    <p>{{ article.date | date }}</p>
+  </div>
 </main>
 
 <!-- Popup Article Modal -->
@@ -23,8 +14,7 @@
       <h2>{{ articles[selectedArticleIndex!].title }}</h2>
       <p>{{ articles[selectedArticleIndex!].content }}</p>
       <p>{{ articles[selectedArticleIndex!].author }}</p>
-      <p>{{ articles[selectedArticleIndex!].date }}</p>
+      <p>{{ articles[selectedArticleIndex!].date | date }}</p>
     </ng-container>
-    
   </div>
 </div>
