@@ -61,7 +61,7 @@ export class LiteratureComponent implements OnInit {
 
   checkAnswer(level: Level, selectedOptionIndex: number) {
     this.selectedAnswerIndex = selectedOptionIndex;
-    this.isAnswerCorrect = selectedOptionIndex === level.correctIndex - 1; // Adjusting for 0-based index
+    this.isAnswerCorrect = selectedOptionIndex === level.correctIndex - 1;
 
     if (this.isAnswerCorrect) {
       this.levelService.markLevelAsCompleted(level.id).subscribe({
@@ -69,13 +69,11 @@ export class LiteratureComponent implements OnInit {
           if (!this.completedLevels.includes(level.id)) {
             this.completedLevels.push(level.id);
           }
-          // Optionally auto-close the level after a delay
           setTimeout(() => this.closeLevel(), 1000);
         },
         error: (err) => console.error('Failed to save progress', err)
       });
     } else {
-      // Incorrect: optional logic
       setTimeout(() => {
         this.selectedAnswerIndex = null;
         this.isAnswerCorrect = null;

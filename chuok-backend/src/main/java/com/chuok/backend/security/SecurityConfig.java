@@ -41,7 +41,6 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/levels/**").permitAll()
                         .requestMatchers("/api/worlds/**").permitAll()
-                        .requestMatchers("/api/completed-levels/**").permitAll()
                         .requestMatchers("/api/articles/**").permitAll()
                         .requestMatchers("/api/phrases/**").permitAll()
                         .anyRequest().authenticated()

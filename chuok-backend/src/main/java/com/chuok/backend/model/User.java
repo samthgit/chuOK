@@ -1,5 +1,6 @@
 package com.chuok.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -42,5 +43,6 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private Set<CompletedLevel> completedLevels = new HashSet<>();
 }

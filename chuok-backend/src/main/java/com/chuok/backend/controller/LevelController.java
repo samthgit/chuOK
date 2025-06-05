@@ -64,8 +64,7 @@ public class LevelController {
             @PathVariable Long levelId,
             @AuthenticationPrincipal CustomUserDetails userDetails
     ) {
-        // Cast to your custom UserDetails implementation if needed
-        String email = userDetails.getUsername(); // In JWT, username is typically the email
+        String email = userDetails.getUsername();
         levelService.markLevelAsCompleted(levelId, email);
         return ResponseEntity.ok().build();
     }
