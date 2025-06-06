@@ -18,6 +18,7 @@ import { authGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { PublicArticlesComponent } from './pages/public-articles/public-articles.component';
 import { PublicGamesComponent } from './pages/public-games/public-games.component';
+import { PublicGuidesComponent } from './pages/public-guides/public-guides.component';
 
 const routes: Routes = [
   // Public routes
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'public-articles/:id', component: PublicArticlesComponent },
   { path: 'public-games/:id', component: PublicGamesComponent},
+  { path: 'public-guides/:id', component: PublicGuidesComponent },
 
   // Protected routes
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },

@@ -1,0 +1,25 @@
+.guide-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: justify;
+    background: #fff;
+    border-radius: 1em;
+    box-shadow: 0 8px 10px rgba(0,0,0,0.2);
+    padding: 40px 30px;
+    width: 800px;
+    margin: 20px auto;
+}
+
+@media (max-width:768px) {
+  .guide-container {
+    width: 75%;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-container {
+    width: 95%;
+  }
+    
+}

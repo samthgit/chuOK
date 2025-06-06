@@ -17,18 +17,6 @@
       </li>
   </ul>
 </nav>
-<section class="info">
-  <pre>{{ userStats | json }}</pre> <!-- For debugging purposes -->
-
-  <div class="stats-container">Last stats:
-    <p *ngIf="userStats.length > 0 && userStats[0].level">
-      Last Level: {{ userStats[0].level.levelNumber }} ({{ userStats[0].level.world?.name }})
-    </p>
-    <p>Total Completed: {{ userStats.length }}</p>
-    <p>Correct: {{ userStats.length }}</p>
-    <p>Total Tries: {{ userStats.length }}</p> <!-- for now same as completed -->
-  </div>
-</section>
 <main class="level-path">
       <div class="level-path-container" style="background-image: url('assets/images/level-path-bg/literature-path-bg-vert.png'); background-size: cover; background-position: center;">
         <ng-container *ngIf="levels && levels.length">
