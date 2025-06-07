@@ -27,9 +27,6 @@ import { PublicGuidesComponent } from './public-guides/public-guides.component';
     NotFoundComponent,
     LibraryComponent,
     AdventureComponent,
-    PublicArticlesComponent,
-    PublicGamesComponent,
-    PublicGuidesComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +37,9 @@ import { PublicGuidesComponent } from './public-guides/public-guides.component';
     NatureComponent,
     LoginComponent,
     SignupComponent,
+    PublicArticlesComponent,
+    PublicGamesComponent,
+    PublicGuidesComponent
   ]
 })
 export class PagesModule { }
