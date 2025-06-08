@@ -1,0 +1,36 @@
+<div class="admin-phrase-panel">
+  <h2>Manage Phrases</h2>
+
+  <button (click)="createNew()">Create New Phrase</button>
+
+  <div *ngIf="isEditing" class="editor">
+    <label>Title: <input [(ngModel)]="selectedPhrase.title"></label>
+    <label>Content: <textarea [(ngModel)]="selectedPhrase.content"></textarea></label>
+    <label>Date: <input [(ngModel)]="selectedPhrase.date" type="date"></label>
+
+    <button (click)="savePhrase()">Save</button>
+    <button (click)="cancelEdit()">Cancel</button>
+  </div>
+
+  <table *ngIf="!isEditing">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let phrase of phrases">
+        <td>{{ phrase.title }}</td>
+        <td>{{ phrase.content }}</td>
+        <td>{{ phrase.date }}</td>
+        <td>
+          <button (click)="editPhrase(phrase)">Edit</button>
+          <button (click)="deletePhrase(phrase.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -4,8 +4,12 @@
   <div class="footer-social-media">
     <div class="footer-logo-image">
       <!-- Home link with logo -->
-      <a routerLink="/main" routerLinkActive="active"><img src="assets/images/chuOK-logo-no-bg.png"
-          alt="chuOK Logo" /></a>
+      <a routerLink="/main" routerLinkActive="active">    
+          <img
+            class="main-logo-picture"
+            [src]="authService.getUserRole() === 'ADMIN' ? 'assets/images/chuOK-logo-no-bg-admin.png' : 'assets/images/chuOK-logo-no-bg.png'"
+            alt="User Role Logo"
+        /></a>
     </div>
     <div class="footer-social-media-links">
       <ul class="footer-social-media-list">

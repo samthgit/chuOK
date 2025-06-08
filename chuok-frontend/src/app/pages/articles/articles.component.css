@@ -1,3 +1,14 @@
+/*
+ * Styles for the articles page, including filter list, article grid, cards, and modal dialogs.
+ *
+ * - .filter-list: Styles for the filter navigation bar at the top.
+ * - .articles-grid: Grid layout for displaying article cards.
+ * - .article-card: Styles for individual article cards.
+ * - .article-modal, .article-modal-overlay: Styles for modal dialogs.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Filter list styles */
 .filter-list {
     display: flex;
     justify-content: space-around;
@@ -35,6 +46,7 @@
     font-size: 1em;
 }
 
+/* Articles grid and card styles */
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -57,6 +69,7 @@
     cursor: pointer;
 }
 
+/* Article modal dialog styles */
 .article-modal-overlay {
     position: fixed;
     top: 0;
@@ -109,6 +122,7 @@
     background: #f43838
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 768px) {
     .articles-grid {
         grid-template-columns: 1fr;

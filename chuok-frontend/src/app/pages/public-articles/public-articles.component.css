@@ -1,3 +1,13 @@
+/*
+ * Styles for the public articles page, including article container, end message, and register button.
+ *
+ * - .article-container: Main container for displaying article content.
+ * - .article-end-message: Styles for the end-of-article message.
+ * - .register-button: Styles for the call-to-action button.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Article container styles */
 .article-container {
     display: flex;
     flex-direction: column;
@@ -13,6 +23,7 @@
     margin: 20px auto;
 }
 
+/* End message and register button styles */
 .article-end-message {
   text-align: center;
   font-size: 18px;
@@ -35,6 +46,7 @@
   background-color: #ad6692;
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width:768px) {
   .article-container {
     width: 75%;

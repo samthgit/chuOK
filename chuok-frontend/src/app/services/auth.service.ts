@@ -77,4 +77,20 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+
+  getUserRole(): string {
+    const token = this.getToken();
+    if (!token) return 'GUEST';
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      // TEMPORARY hardcoded fallback until the role is included in the token
+      if (payload.sub === 'admin@chuOK.com') return 'ADMIN';
+
+      return 'USER';
+    } catch (e) {
+      return 'GUEST';
+    }
+  }
 }

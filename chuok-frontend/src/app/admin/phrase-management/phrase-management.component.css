@@ -1,0 +1,152 @@
+/*
+ * Styles for the admin phrase management panel.
+ *
+ * - .admin-phrase-panel: Main container for the phrase management section.
+ * - h2: Section title styling.
+ * - button: Modern, consistent button styles for actions.
+ * - .editor: Form for creating/editing phrases, with clear layout and spacing.
+ * - table: Responsive, clean table for listing phrases.
+ * - Responsive adjustments for smaller screens.
+ */
+
+.admin-phrase-panel {
+    background: #fff;
+    border-radius: 1.5em;
+    padding: 32px 28px 28px 28px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 32px;
+}
+
+.admin-phrase-panel h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.admin-phrase-panel button {
+    background-color: #292929;
+    color: #fff;
+    border: none;
+    border-radius: 2em;
+    padding: 10px 28px;
+    font-weight: 600;
+    margin: 0 8px 16px 0;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+}
+
+.editor {
+    background: #f8f8f8;
+    border-radius: 1em;
+    padding: 24px 18px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.editor label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    color: #292929;
+    font-size: 1em;
+}
+
+.editor input, .editor textarea {
+    margin-top: 6px;
+    padding: 10px;
+    border: 1px solid #292929;
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-family: inherit;
+    background: #fff;
+    resize: vertical;
+    transition: border 0.2s;
+}
+
+.editor input:focus, .editor textarea:focus {
+    border-color: #d4af37;
+    outline: none;
+}
+
+.editor textarea {
+    min-height: 80px;
+    max-height: 300px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    background: #fafafa;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+thead {
+    background: #292929;
+    color: #fff;
+}
+
+thead th {
+    padding: 14px 10px;
+    font-weight: 600;
+}
+
+tbody td {
+    padding: 12px 10px;
+    color: #292929;
+    border-bottom: 1px solid #ececec;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: #f3e6f3;
+}
+
+td button {
+    background-color: #292929;
+    margin: 0 4px;
+    padding: 3px 12px;
+    border-radius: 1em;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .admin-phrase-panel {
+        padding: 18px 6px;
+        max-width: 100%;
+    }
+    .editor {
+        padding: 14px 4px;
+    }
+    table, thead th, tbody td {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-phrase-panel {
+        padding: 8px 2px;
+    }
+    .editor label {
+        font-size: 0.95em;
+    }
+    .editor input, .editor textarea {
+        font-size: 0.95em;
+    }
+    table, thead th, tbody td {
+        font-size: 0.9em;
+    }
+}

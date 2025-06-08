@@ -36,4 +36,25 @@ export class ArticleService {
   getArticleById(id: number): Observable<Article> {
     return this.http.get<Article>(`${this.apiUrl}/${id}`);
   }
+
+  /**
+   * Creates a new article.
+   */
+  createArticle(article: Partial<Article>): Observable<Article> {
+    return this.http.post<Article>(this.apiUrl, article);
+  }
+
+  /**
+   * Updates an existing article by ID.
+   */
+  updateArticle(id: number, article: Partial<Article>): Observable<Article> {
+    return this.http.put<Article>(`${this.apiUrl}/${id}`, article);
+  }
+
+  /**
+   * Deletes an article by ID.
+   */
+  deleteArticle(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

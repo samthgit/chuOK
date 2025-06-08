@@ -1,3 +1,13 @@
+/*
+ * Styles for the contact page, including about section, form, and button styles.
+ *
+ * - .about-section: Container for contact info and form.
+ * - .form: Styles for the contact form and its fields.
+ * - .fancy: Custom button styles with hover effects.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* About section and form container styles */
 .about-section {
     display: flex;
     flex-direction: column;
@@ -15,7 +25,7 @@
     color: #333;
 }
 
-/* From Uiverse.io by somshri16 */ 
+/* Form and input styles */
 .form {
   display: flex;
   flex-direction: column;
@@ -108,6 +118,7 @@
   color: green;
 }
 
+/* Fancy button and interactive styles */
 .fancy {
   background-color: transparent;
   border: 2px solid #cacaca;
@@ -191,7 +202,6 @@
 .fancy:hover {
   background: linear-gradient(90deg, #6bb868 0%, #b8689a 100%);
   color: #fff;
-  /* border: none; */
 }
 
 .fancy:hover::before {
@@ -215,6 +225,7 @@
   width: 0;
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 768px) {
   .about-section {
     width: 90%;

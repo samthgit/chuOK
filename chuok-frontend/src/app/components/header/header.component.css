@@ -1,3 +1,14 @@
+/*
+ * Styles for the header component, including layout, logo, and navigation bar.
+ *
+ * - .header: Styles the header container, centering content and setting background.
+ * - .main-logo-picture, .logo-picture: Control logo image sizing and scaling.
+ * - .nav-bar: Styles the vertical navigation bar, including open/collapsed states and transitions.
+ * - .bounce-hover: Adds a bounce animation on hover for interactive elements.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Header container styles */
 .header {
     font-size: 24px;
     height: auto;
@@ -13,7 +24,8 @@
     background-color: #f5f5f5;
     border-bottom: 1px solid #ccc;
 }
-  
+
+/* Logo image styles */
 .main-logo-picture {
     height: 130px;      /* Fixed height to prevent overflow */
     width: auto;
@@ -28,6 +40,7 @@
     object-fit: contain;
 }
 
+/* Navigation bar styles */
 .nav-bar {
   position: fixed;
   top: 50%;
@@ -69,6 +82,7 @@
   margin: 15px 0;
 }
 
+/* Bounce animation for hover effect */
 .bounce-hover:hover {
     animation: bounce 0.75s ease-in-out;
 }
@@ -86,6 +100,7 @@
     
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 768px) {
     .nav-bar {
         height: 200px; /* Adjusted collapsed height for smaller screens */

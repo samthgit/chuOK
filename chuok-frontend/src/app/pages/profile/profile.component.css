@@ -1,3 +1,14 @@
+/*
+ * Styles for the profile page, including layout, content, sidebar, and form elements.
+ *
+ * - .info-container: Grid layout for main content and sidebar.
+ * - .content: Main profile content area.
+ * - .sidebar: Sidebar with navigation buttons.
+ * - .item, input, textarea: Styles for profile fields and editing.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Main grid layout styles */
 .info-container {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -5,10 +16,10 @@
     
 }
 
+/* Content and content box styles */
 .content {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     padding: 20px;
     background-color: #f1f1f1;
     margin: 10px 0 0 10px;
@@ -29,12 +40,52 @@
     border-radius: 10px;
 }
 
+/* Sidebar and navigation button styles */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: #6bb868;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 0.5em;
+    height: 75vh;
+}
+
+.sidebar h1 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 0.5em;
+}
+
+.sidebar button:hover {
+    background-color: #63af63;
+}
+
+.sidebar button.active {
+    background-color: #518e51;
+}
+
+/* Item, input, and textarea styles */
 .item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     width: 45%;
-    /* background-color: #518e51; */
     padding-left: 10px;
     font-weight: 400;
 }
@@ -70,48 +121,7 @@ textarea {
     resize: none;
 }
 
-
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    background-color: #6bb868;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 0.5em;
-    height: 75vh;
-}
-
-.sidebar h1 {
-    /* color: white; */
-    font-size: 2.5em;
-    margin-bottom: 50px;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar button {
-    background-color: transparent;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 20px;
-    border-radius: 0.5em;
-}
-
-.sidebar button:hover {
-    background-color: #63af63;
-}
-
-.sidebar button.active {
-    /* background: linear-gradient(to left, #4a834a, #63af63); */
-    background-color: #518e51;
-}
-
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 768px) {
     .info-container {
         grid-template-columns: 1fr;

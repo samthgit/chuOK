@@ -1,5 +1,6 @@
 package com.chuok.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Set;
 
@@ -28,5 +29,6 @@ public class Role {
 
     /** Set of users assigned to this role. */
     @OneToMany(mappedBy = "role")
+    @JsonIgnore
     private Set<User> users;
 }

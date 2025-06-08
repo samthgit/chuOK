@@ -1,3 +1,16 @@
+/*
+ * Styles for the nature page, including filter list, stats, level path, questions, answers, and modal dialogs.
+ *
+ * - .filter-list: Styles for the filter navigation bar at the top.
+ * - .stats-container: Layout for statistics display.
+ * - .level-path-container: Grid layout for level buttons.
+ * - .level-button: Styles for level selection buttons, including completed state.
+ * - .question, .answer, .answer-container: Styles for quiz questions and answer options.
+ * - .level-modal, .level-modal-overlay: Styles for modal dialogs.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Filter list styles */
 .filter-list {
     display: flex;
     justify-content: space-around;
@@ -29,6 +42,7 @@
     font-size: 1.2em;
 }
 
+/* Stats container styles */
 .stats-container {
     display: flex;
     justify-content: space-around;
@@ -44,6 +58,7 @@
     font-size: 20px;
 }
 
+/* Level path grid styles */
 .level-path-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 3 columns */
@@ -55,6 +70,7 @@
   border-radius: 0.5em;
 }
 
+/* Level button styles */
 .level-button {
   background-color: #178d13;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
@@ -72,6 +88,7 @@
   cursor: default;
 }
 
+/* Question and answer styles */
 .question {
     /* background-color: #faf2e2; */
     border: #dbdbdb 1px solid;
@@ -105,23 +122,6 @@
     height: auto;
 }
 
-/* .answer {
-    border: #178d13 1px solid;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    padding: 10px;
-    width: 90%;
-    height: 100%;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 0.5em;
-    cursor: pointer;
-} */
-
 .answer {
   cursor: pointer;
   padding: 10px;
@@ -139,6 +139,7 @@
   color: white;
 }
 
+/* Modal dialog styles */
 .level-modal-overlay {
   position: fixed;
   top: 0;
@@ -192,7 +193,7 @@
   background: #f43838;
 }
 
-
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 768px) {
   .level-path-container {
     grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */

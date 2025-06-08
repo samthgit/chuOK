@@ -40,13 +40,13 @@ export class AppComponent {
    * Hides the header on login and signup pages.
    */
   get hideHeader(): boolean {
-    return this.router.url === '/login' || this.router.url === '/signup';
+    return this.router.url === '/login' || this.router.url === '/signup' || this.router.url === '/not-found';
   }
 
   /**
    * Hides the footer on login, signup, and user-center pages.
    */
   get hideFooter(): boolean {
-    return this.router.url === '/login' || this.router.url === '/signup' || this.router.url === '/user-center';
+    return this.router.url === '/login' || this.router.url === '/signup' || this.router.url === '/user-center' || this.router.url === '/not-found';
   }
 }

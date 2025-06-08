@@ -1,10 +1,17 @@
+<!--
+  Displays a single public article based on the currentArticleId.
+  Shows the article's title and content, and a dynamic message at the end:
+    - If the user is not logged in, prompts them to sign up for more content.
+    - If logged in, thanks the user for reading.
+  The article is styled with .article-container and .article-end-message classes.
+-->
 <div *ngFor="let article of articles">
   <div *ngIf="article.id === currentArticleId" >
     <div class="article-container">
       <h2>{{ article.title }}</h2>
       <p>{{ article.content }}</p>
     </div>
-    <!-- Mensaje dinámico al final del artículo -->
+    <!-- Dynamic end-of-article message -->
     <div class="article-end-message">
       <ng-container *ngIf="!isLoggedIn; else loggedInMessage">
         <p>Did you like it? <strong>Sign up</strong> to access more interesting content!</p>

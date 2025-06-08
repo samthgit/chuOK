@@ -1,3 +1,11 @@
+/*
+ * Styles for the public guides page, including the main guide container and responsive adjustments.
+ *
+ * - .guide-container: Main container for displaying guide content.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Guide container styles */
 .guide-container {
     display: flex;
     flex-direction: column;
@@ -11,6 +19,7 @@
     margin: 20px auto;
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width:768px) {
   .guide-container {
     width: 75%;

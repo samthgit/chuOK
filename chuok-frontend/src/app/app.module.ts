@@ -7,16 +7,17 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   providers: [
     provideClientHydration(withEventReplay()),

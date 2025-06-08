@@ -1,3 +1,13 @@
+/*
+ * Styles for the phrases page, including filter list, phrase grid, cards, and modal dialogs.
+ *
+ * - .filter-list: Styles for the filter navigation bar at the top.
+ * - .phrases-grid: Grid layout for displaying phrase cards.
+ * - .phrase-card: Styles for individual phrase cards.
+ * - .phrase-modal, .phrase-modal-overlay: Styles for modal dialogs.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
 .filter-list {
     display: flex;
     justify-content: space-around;
@@ -7,7 +17,6 @@
     background-color: #eaeaea;
     padding: 10px 0;
     border-radius: 0.5em;
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     margin: 10px auto;
     width: 95%;
 }

@@ -1,3 +1,14 @@
+/*
+ * Styles for the signup page, including layout, form, and button styles.
+ *
+ * - .main: Grid layout for the signup page.
+ * - .form-section: Styles for the form container.
+ * - .form: Styles for the signup form and its fields.
+ * - .fancy: Custom button styles with hover effects.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Main grid layout styles */
 .main {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -5,6 +16,7 @@
     height: 100vh;
 }
 
+/* Form section and form styles */
 .form-section {
     display: flex;
     flex-direction: column;
@@ -116,6 +128,7 @@
     transform: translateY(2px);
 }
 
+/* Fancy button and interactive styles */
 .fancy {
   background-color: transparent;
   border: 2px solid #cacaca;
@@ -256,6 +269,7 @@ a {
     object-fit: contain;
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 768px) {
   .main {
     grid-template-columns: 1fr;

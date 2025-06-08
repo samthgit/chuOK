@@ -1,3 +1,14 @@
+/*
+ * Styles for the adventure page, including catchphrase, intro, and themed section layouts.
+ *
+ * - .catchphrase, .intro: Centered text for page introduction.
+ * - .sections: Flex layout for the three main adventure sections.
+ * - .literature, .science, .nature: Themed section boxes with gradients.
+ * - .section-title, .section-content: Section heading and content styles.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Catchphrase and intro styles */
 .catchphrase {
     display: flex;
     justify-content: center;
@@ -16,6 +27,7 @@
     text-align: center;
 }
 
+/* Section container and themed section styles */
 .sections {
     display: flex;
     height: auto;
@@ -60,6 +72,7 @@
     );
 }
 
+/* Section title and content styles */
 .section-title {
     font-size: 2.5rem;
     padding-bottom: 50px;
@@ -69,6 +82,7 @@
     padding: 0 10px;
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 768px) {
     .sections {
         flex-direction: column; /* Cambia de fila a columna */

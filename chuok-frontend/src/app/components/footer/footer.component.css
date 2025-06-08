@@ -1,3 +1,14 @@
+/*
+ * Styles for the footer component, including layout, social media, links, and copyright.
+ *
+ * - .footer: Main grid layout for the footer.
+ * - .footer-social-media-list: Styles for social media icons and tooltips.
+ * - .footer-links: Styles for footer navigation links and sections.
+ * - .footer-copyright: Styles for copyright notice.
+ * - Responsive media queries adjust layout for smaller screens.
+ */
+
+/* Footer grid layout styles */
 .footer {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -10,6 +21,7 @@ ul {
   list-style: none;
 }
 
+/* Social media list and icon styles */
 .footer-social-media-list {
   display: flex;
   justify-content: center;
@@ -103,6 +115,7 @@ ul {
 }
 
 
+/* Footer navigation links section styles */
 .footer-social-media {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -143,6 +156,7 @@ ul {
     color: #292929;
 }
 
+/* Copyright section styles */
 .footer-links {
     grid-column: 2 / 3; 
     grid-row: 1 / 2;
@@ -175,6 +189,7 @@ ul {
     height: 50px;
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 750px) {
     .footer {
         grid-template-columns: 1fr;

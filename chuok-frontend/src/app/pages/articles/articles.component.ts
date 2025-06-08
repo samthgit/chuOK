@@ -27,6 +27,10 @@ export class ArticlesComponent implements OnInit {
     });
   }
 
+  get reversedArticles(): Article[] {
+    return this.articles.slice().reverse();
+  }
+
   // Open the modal for the selected article
   openArticle(index: number) {
     this.selectedArticleIndex = index;

@@ -19,6 +19,9 @@ import { NoAuthGuard } from './guards/no-auth.guard';
 import { PublicArticlesComponent } from './pages/public-articles/public-articles.component';
 import { PublicGamesComponent } from './pages/public-games/public-games.component';
 import { PublicGuidesComponent } from './pages/public-guides/public-guides.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { RoleGuard } from './guards/role.guard';
 
 const routes: Routes = [
   // Public routes
@@ -31,6 +34,7 @@ const routes: Routes = [
   { path: 'public-articles/:id', component: PublicArticlesComponent },
   { path: 'public-games/:id', component: PublicGamesComponent},
   { path: 'public-guides/:id', component: PublicGuidesComponent },
+  { path: 'not-found', component: NotFoundComponent },
 
   // Protected routes
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
@@ -43,7 +47,14 @@ const routes: Routes = [
   { path: 'adventure/science', component: ScienceComponent, canActivate: [authGuard] },
   { path: 'adventure/nature', component: NatureComponent, canActivate: [authGuard] },
 
-  { path: '**', redirectTo: '/main' }
+  // Admin routes
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule)
+  },
+
+  { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({

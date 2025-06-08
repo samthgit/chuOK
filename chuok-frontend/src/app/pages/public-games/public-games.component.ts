@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+// Component for displaying a public quiz game with multiple questions and answers.
+// Handles answer selection, feedback, and navigation between questions.
 @Component({
   selector: 'app-public-games',
   standalone: true,
@@ -12,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './public-games.component.css'
 })
 export class PublicGamesComponent implements OnInit {
+  // List of quiz games/questions to display
   games = [
     {
       id: 1,
@@ -64,13 +67,23 @@ export class PublicGamesComponent implements OnInit {
     }
   ];
 
+  // The ID of the currently displayed game/question
   currentGameId: number = 1;
+  // The answer currently selected by the user
   selectedAnswer: string | null = null;
+  // Tracks the status (correct/incorrect) of each answer
   answerStatus: { [key: string]: 'correct' | 'incorrect' | null } = {};
+  // Whether the game has finished
   gameFinished: boolean = false;
 
+  /**
+   * Injects dependencies for route handling and authentication status.
+   */
   constructor(private route: ActivatedRoute, private authService: AuthService) {}
 
+  /**
+   * On component initialization, subscribes to route changes and updates the current game.
+   */
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
@@ -78,47 +91,54 @@ export class PublicGamesComponent implements OnInit {
     });
   }
 
-selectAnswer(answer: string) {
-  const currentGame = this.games.find(game => game.id === this.currentGameId);
-  if (!currentGame) return;
+  /**
+   * Handles answer selection, provides feedback, and advances to the next question or ends the game.
+   * @param answer The answer selected by the user
+   */
+  selectAnswer(answer: string) {
+    const currentGame = this.games.find(game => game.id === this.currentGameId);
+    if (!currentGame) return;
 
-  // Evitar múltiples clics si ya respondió correctamente
-  if (this.selectedAnswer && this.answerStatus[this.selectedAnswer] === 'correct') {
-    return;
+    // Avoid multiple clicks if answered correctly
+    if (this.selectedAnswer && this.answerStatus[this.selectedAnswer] === 'correct') {
+      return;
+    }
+
+    if (answer === currentGame.correctAnswer) {
+      this.answerStatus = { [answer]: 'correct' };
+      this.selectedAnswer = answer;
+
+      // Wait before getting to the next question
+      setTimeout(() => {
+        this.answerStatus = {};
+        this.selectedAnswer = null;
+
+        // Go to next question if exists
+        const currentIndex = this.games.findIndex(game => game.id === this.currentGameId);
+        if (currentIndex < this.games.length - 1) {
+          this.currentGameId = this.games[currentIndex + 1].id;
+        } else {
+          this.gameFinished = true;
+        }
+      }, 2500);
+
+    } else {
+      // Display answer red temporarily and then let user keep trying
+      this.answerStatus = { [answer]: 'incorrect' };
+      this.selectedAnswer = answer;
+
+      setTimeout(() => {
+        this.answerStatus = {};
+        this.selectedAnswer = null;
+      }, 1500);
+    }
   }
 
-  if (answer === currentGame.correctAnswer) {
-    this.answerStatus = { [answer]: 'correct' };
-    this.selectedAnswer = answer;
-
-    // Esperar antes de avanzar a la siguiente pregunta
-    setTimeout(() => {
-      this.answerStatus = {};
-      this.selectedAnswer = null;
-
-      // Avanzar a la siguiente pregunta si existe
-      const currentIndex = this.games.findIndex(game => game.id === this.currentGameId);
-      if (currentIndex < this.games.length - 1) {
-        this.currentGameId = this.games[currentIndex + 1].id;
-      } else {
-        this.gameFinished = true;
-      }
-    }, 2500); // 2.5 segundos
-
-  } else {
-    // Mostrar rojo temporalmente y permitir seguir intentando
-    this.answerStatus = { [answer]: 'incorrect' };
-    this.selectedAnswer = answer;
-
-    setTimeout(() => {
-      this.answerStatus = {};
-      this.selectedAnswer = null;
-    }, 1500); // 1.5 segundos
+  /**
+   * Returns true if the user is logged in, false otherwise.
+   */
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
-}
 
-get isLoggedIn(): boolean {
-  return this.authService.isLoggedIn();
 }
-
-} 

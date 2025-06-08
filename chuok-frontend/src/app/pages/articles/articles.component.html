@@ -1,6 +1,6 @@
 <!-- Main grid of articles. Each card opens a modal on click -->
 <main class="articles-grid">
-  <div class="article-card" *ngFor="let article of articles; let i = index" (click)="openArticle(i)">
+  <div class="article-card" *ngFor="let article of reversedArticles; let i = index" (click)="openArticle(i)">
     <h4>{{ article.title }}</h4>
     <p>{{ article.author }}</p>
     <p>{{ article.date | date }}</p>
@@ -13,10 +13,10 @@
     <!-- Close button -->
     <button (click)="closeArticle()"></button>
     <ng-container *ngIf="selectedArticleIndex !== null">
-      <h2>{{ articles[selectedArticleIndex!].title }}</h2>
-      <p>{{ articles[selectedArticleIndex!].content }}</p>
-      <p>{{ articles[selectedArticleIndex!].author }}</p>
-      <p>{{ articles[selectedArticleIndex!].date | date }}</p>
+      <h2>{{ reversedArticles[selectedArticleIndex!].title }}</h2>
+      <p>{{ reversedArticles[selectedArticleIndex!].content }}</p>
+      <p>{{ reversedArticles[selectedArticleIndex!].author }}</p>
+      <p>{{ reversedArticles[selectedArticleIndex!].date | date }}</p>
     </ng-container>
   </div>
 </div>

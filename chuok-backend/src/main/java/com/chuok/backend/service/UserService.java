@@ -2,6 +2,8 @@ package com.chuok.backend.service;
 
 import com.chuok.backend.model.User;
 import com.chuok.backend.repository.UserRepository;
+import com.chuok.backend.model.Role;
+import com.chuok.backend.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,13 +16,15 @@ import java.util.List;
 public class UserService {
     /** Repository for accessing User data. */
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
     /**
      * Constructor for dependency injection.
      * @param userRepository the UserRepository instance
      */
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     /**
@@ -70,5 +74,16 @@ public class UserService {
      */
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public User updateUserRole(Long userId, Long roleId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Role newRole = roleRepository.findById(roleId)
+                .orElseThrow(() -> new RuntimeException("Role not found"));
+
+        user.setRole(newRole);
+        return userRepository.save(user);
     }
 }

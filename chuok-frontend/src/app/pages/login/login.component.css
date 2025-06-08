@@ -1,3 +1,14 @@
+/*
+ * Styles for the login page, including layout, form, and button styles.
+ *
+ * - .main: Grid layout for the login page.
+ * - .form-section: Styles for the form container.
+ * - .form: Styles for the login form and its fields.
+ * - .fancy: Custom button styles with hover effects.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Main grid layout styles */
 .main {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -5,6 +16,7 @@
     height: 100vh;
 }
 
+/* Form section and form styles */
 .form-section {
     display: flex;
     flex-direction: column;
@@ -22,12 +34,11 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 700px; /* Increased from 500px */
-  width: 70%; /* Ensure it stretches to max-width */
-  /* background-color: #fff; */
-  padding: 40px; /* Increased padding for a larger feel */
+  max-width: 700px;
+  width: 70%;
+  padding: 40px;
   border-radius: 10px;
-  margin: 40px auto; /* Add more margin for vertical space */
+  margin: 40px auto;
 }
 
 .message {
@@ -116,6 +127,7 @@
     transform: translateY(2px);
 }
 
+/* Fancy button and interactive styles */
 .fancy {
   background-color: transparent;
   border: 2px solid #cacaca;
@@ -199,7 +211,6 @@
 .fancy:hover {
   background: linear-gradient(90deg, #6bb868 0%, #b8689a 100%);
   color: #fff;
-  /* border: none; */
 }
 
 .fancy:hover::before {
@@ -223,6 +234,7 @@
   width: 0;
 }
 
+/* Responsive adjustments for tablets and mobile */
 .flex-message {
   display: flex;
   flex-direction: column;

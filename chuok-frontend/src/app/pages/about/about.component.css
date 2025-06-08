@@ -1,14 +1,25 @@
+/*
+ * Styles for the about page, including main content, about section, and sidebar.
+ *
+ * - .main-content: Grid layout for about and sidebar sections.
+ * - .about-section: Main about content area.
+ * - .sidebar: Sidebar with additional info or profile picture.
+ * - .profile-picture: Styles for profile image.
+ * - Responsive media queries adjust layout and sizing for smaller screens.
+ */
+
+/* Main grid layout styles */
 .main-content {
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr;
     gap: 20px;
-    /* background-color: #f9f9f9; */
     border-radius: 0.5em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 20px;
 }
 
+/* About section styles */
 .about-section {
     display: flex;
     flex-direction: column;
@@ -30,6 +41,7 @@
     text-align: justify;
 }
 
+/* Sidebar and profile picture styles */
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -61,6 +73,7 @@
     margin: 0 auto;
 }
 
+/* Responsive adjustments for tablets and mobile */
 @media (max-width: 768px) {
     .main-content {
         grid-template-columns: 1fr;

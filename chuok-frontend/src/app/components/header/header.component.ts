@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private routerEventsSub!: Subscription;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
@@ -90,5 +90,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.closeNav();
     this.router.navigate(['/login']);
+  }
+  
+  isAdmin(): boolean {
+    return this.authService.getUserRole() === 'ADMIN';
   }
 }

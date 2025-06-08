@@ -1,0 +1,26 @@
+<div class="user-admin-panel">
+  <h2>User Management</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Current Role</th>
+        <th>Change Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role.name }}</td>
+        <td>
+            <select [value]="user.role?.id" (change)="changeRoleFromEvent(user, $event)">
+            <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
+            </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

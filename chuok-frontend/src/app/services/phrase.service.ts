@@ -35,4 +35,25 @@ export class PhraseService {
   getPhraseById(id: number): Observable<Phrase> {
     return this.http.get<Phrase>(`${this.apiUrl}/${id}`);
   }
+
+  /**
+   * Creates a new phrase.
+   */
+  createPhrase(phrase: Partial<Phrase>): Observable<Phrase> {
+    return this.http.post<Phrase>(this.apiUrl, phrase);
+  }
+
+  /**
+   * Updates an existing phrase by ID.
+   */
+  updatePhrase(id: number, phrase: Partial<Phrase>): Observable<Phrase> {
+    return this.http.put<Phrase>(`${this.apiUrl}/${id}`, phrase);
+  }
+
+  /**
+   * Deletes a phrase by ID.
+   */
+  deletePhrase(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

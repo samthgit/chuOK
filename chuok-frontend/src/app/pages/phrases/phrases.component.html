@@ -3,7 +3,7 @@
   Clicking a card opens a modal popup with the full phrase content and date.
 -->
 <main class="phrases-grid">
-    <div class="phrase-card" *ngFor="let phrase of phrases; let i = index" (click)="openPhrase(i)">
+    <div class="phrase-card" *ngFor="let phrase of reversedPhrases; let i = index" (click)="openPhrase(i)">
         <h4>{{ phrase.title }}</h4>
         <p></p>
         <p>{{ phrase.date }}</p>
@@ -15,9 +15,9 @@
   <div class="phrase-modal" (click)="$event.stopPropagation()">
     <button (click)="closePhrase()"></button>
     <ng-container *ngIf="selectedPhraseIndex !== null">
-      <h2>{{ phrases[selectedPhraseIndex!].title }}</h2>
-      <p>{{ phrases[selectedPhraseIndex!].content }}</p>
-      <p>{{ phrases[selectedPhraseIndex!].date | date }}</p>
+      <h2>{{ reversedPhrases[selectedPhraseIndex!].title }}</h2>
+      <p>{{ reversedPhrases[selectedPhraseIndex!].content }}</p>
+      <p>{{ reversedPhrases[selectedPhraseIndex!].date | date }}</p>
     </ng-container>
   </div>
 </div>

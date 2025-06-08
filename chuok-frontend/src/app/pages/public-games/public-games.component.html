@@ -1,10 +1,20 @@
-<!-- Mostrar la pregunta solo si no ha terminado -->
+<!--
+  Displays a public quiz game with questions and answers.
+  - Shows the current question and answer options if the game is not finished.
+  - Highlights answers as correct/incorrect based on user selection.
+  - When finished, displays a final message:
+      - If not logged in, prompts the user to sign up.
+      - If logged in, thanks the user and provides navigation buttons.
+  Uses .question, .answer-container, .game-finished, and .register-button classes for styling.
+-->
+<!-- Show the question only if the game is not finished -->
 <div *ngIf="!gameFinished">
   <div *ngFor="let game of games">
     <div *ngIf="game.id === currentGameId" class="question">
       <h2>{{ game.title }}</h2>
       <p>{{ game.question }}</p>
       <div class="answer-container">
+        <!-- Answer options with dynamic classes for correct/incorrect -->
         <div
           class="answer"
           [ngClass]="{
@@ -46,7 +56,7 @@
   </div>
 </div>
 
-<!-- Mensaje final -->
+<!-- Final message when the game is finished -->
 <div *ngIf="gameFinished" class="game-finished">
   <h2>You finished the game!</h2>
 

@@ -1,6 +1,7 @@
 package com.chuok.backend.controller;
 
 import com.chuok.backend.model.User;
+import com.chuok.backend.payload.RoleUpdateRequest;
 import com.chuok.backend.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -74,4 +75,10 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
+
+    @PutMapping("/{id}/role")
+    public User updateUserRole(@PathVariable Long id, @RequestBody RoleUpdateRequest request) {
+        return userService.updateUserRole(id, request.getRoleId());
+    }
+
 }

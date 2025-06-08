@@ -1,7 +1,17 @@
+/*
+ * Styles for the public games page, including question, answer, and button styles.
+ *
+ * - .question: Styles for the quiz question container.
+ * - .answer-container: Grid layout for answer options.
+ * - .answer, .answer-correct, .answer-incorrect: Styles for answer buttons and their states.
+ * - .game-finished: Styles for the game finished message.
+ * - .register-button: Styles for the call-to-action button.
+ * - .button-container: Layout for navigation buttons.
+ */
+
+/* Question and answer container styles */
 .question {
-    /* background-color: #faf2e2; */
     border: #dbdbdb 1px solid;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,6 +36,7 @@
     border-radius: 0.5em;
 }
 
+/* Answer button and state styles */
 .answer {
     border: #d29999 1px solid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
@@ -43,20 +54,17 @@
     cursor: pointer;
 }
 
-/* .answer:hover {
-    background-color: #f0f0f0;
-} */
-
 .answer-correct {
-    background-color: #74ba74; /* light green for correct */
+    background-color: #74ba74;
     cursor: default;
 }
 
 .answer-incorrect {
-    background-color: #ff4747; /* light red for incorrect */
+    background-color: #ff4747;
     cursor: default;
 }
 
+/* Game finished message and register button styles */
 .game-finished {
   text-align: center;
   margin: 40px auto;
@@ -79,10 +87,10 @@
   background-color: #ad6692;
 }
 
+/* Button container styles */
 .button-container {
   display: flex;
   justify-content: space-around;
-  /* border: #74ba74 1px solid; */
   width: 50%;
   margin: 0 auto;
   margin-top: 20px;

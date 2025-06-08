@@ -31,6 +31,10 @@ export class PhrasesComponent implements OnInit {
     });
   }
 
+  get reversedPhrases(): Phrase[] {
+    return this.phrases.slice().reverse();
+  }
+
   /**
    * Opens the modal for the selected phrase.
    */
