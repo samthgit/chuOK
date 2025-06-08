@@ -1,3 +1,5 @@
+![chuOK logo](./chuOK-logo.png)
+
 **chuOK** es una aplicación web diseñada como un refugio digital para combatir el estrés cotidiano y el burnout, especialmente en el sector tecnológico. Su nombre proviene del término coreano "추억" (chu-eok), que significa "recuerdo", evocando una experiencia nostálgica, relajante y enriquecedora. Su misión es transformar el tiempo libre en una aventura de aprendizaje activo y entretenimiento consciente.
 
 ## Tecnologías utilizadas
