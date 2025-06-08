@@ -1,3 +1,4 @@
+// AdventureComponent: Main entry for the adventure section
 import { Component } from '@angular/core';
 
 @Component({

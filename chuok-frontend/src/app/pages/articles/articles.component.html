@@ -1,3 +1,4 @@
+<!-- Main grid of articles. Each card opens a modal on click -->
 <main class="articles-grid">
   <div class="article-card" *ngFor="let article of articles; let i = index" (click)="openArticle(i)">
     <h4>{{ article.title }}</h4>
@@ -6,9 +7,10 @@
   </div>
 </main>
 
-<!-- Popup Article Modal -->
+<!-- Popup Article Modal: Shows article details, closes on overlay or button click -->
 <div *ngIf="selectedArticleIndex !== null" class="article-modal-overlay" (click)="closeArticle()">
   <div class="article-modal" (click)="$event.stopPropagation()">
+    <!-- Close button -->
     <button (click)="closeArticle()"></button>
     <ng-container *ngIf="selectedArticleIndex !== null">
       <h2>{{ articles[selectedArticleIndex!].title }}</h2>

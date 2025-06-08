@@ -1,3 +1,8 @@
+<!--
+  Signup page for new user registration.
+  Includes a form for username, email, and password, with error handling and navigation to login.
+  Logo links back to the main page.
+-->
 <main class="main">
     <section class="about-section">
         <a href="/main"><img class="main-logo-picture" src="assets/images/chuOK-logo-no-border-white.png" alt="Home Logo"></a>
@@ -6,21 +11,25 @@
     <form class="form" (ngSubmit)="onSubmit()">
       <h1>SIGN UP</h1>
 
+      <!-- Username input field -->
       <label>
         <input required type="text" class="input" [(ngModel)]="username" name="username" />
         <span>username</span>
       </label>
 
+      <!-- Email input field -->
       <label>
         <input required type="email" class="input" [(ngModel)]="email" name="email" />
         <span>email</span>
       </label>
 
+      <!-- Password input field -->
       <label>
         <input required type="password" class="input" [(ngModel)]="password" name="password" />
         <span>password</span>
       </label>
 
+      <!-- Submit button with custom styling -->
       <button class="fancy" type="submit">
         <span class="top-key"></span>
         <span class="text">sign up</span>
@@ -28,6 +37,7 @@
         <span class="bottom-key-2"></span>
       </button>
 
+      <!-- Error message shown if signup fails -->
       <div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
       <div class="flex-message">
         <p>Welcome! Start your adventure here.</p>

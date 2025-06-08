@@ -25,14 +25,23 @@ export interface CompletedLevel {
   level: Level;
 }
 
+/**
+ * LevelService provides methods to fetch, complete, and get stats for adventure levels.
+ * Handles API communication for levels, completed levels, and user stats.
+ */
 @Injectable({
     providedIn: 'root'
 })
 export class LevelService {
+    /** Base URL for the levels API */
     private baseUrl = 'http://localhost:8080/api/levels';
 
     constructor(private http: HttpClient) {}
 
+    /**
+     * Fetches all levels for a given world ID.
+     * Filters levels by world ID on the client side.
+     */
     getLevelsByWorldId(worldId: number): Observable<Level[]> {
       return this.http.get<Level[]>(`${this.baseUrl}`).pipe(
         map(levels => levels.filter(level => level.world.id === worldId)),
@@ -40,17 +49,26 @@ export class LevelService {
       );
     }
 
+    /**
+     * Handles HTTP errors for level requests.
+     */
     private handleError(error: HttpErrorResponse) {
       console.error('An error occurred:', error.error);
       return throwError(() => new Error('Something went wrong; please try again later.'));
     }
 
+    /**
+     * Fetches all completed levels for the current user.
+     */
     getCompletedLevels(): Observable<Level[]> {
       return this.http.get<Level[]>(`${this.baseUrl}/completed`, {
         withCredentials: true
       });
     }
 
+    /**
+     * Marks a level as completed for the current user.
+     */
     markLevelAsCompleted(levelId: number): Observable<void> {
       return this.http.post<void>(
         `${this.baseUrl}/${levelId}/complete`,
@@ -59,6 +77,9 @@ export class LevelService {
       );
     }
 
+    /**
+     * Fetches user stats for completed levels.
+     */
     getUserStats(): Observable<CompletedLevel[]> {
       return this.http.get<CompletedLevel[]>(`${this.baseUrl}/stats`, {
         withCredentials: true

@@ -1,3 +1,7 @@
+<!--
+  Phrases page displays a grid of phrase cards.
+  Clicking a card opens a modal popup with the full phrase content and date.
+-->
 <main class="phrases-grid">
     <div class="phrase-card" *ngFor="let phrase of phrases; let i = index" (click)="openPhrase(i)">
         <h4>{{ phrase.title }}</h4>

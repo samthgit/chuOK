@@ -1,3 +1,8 @@
+<!--
+  Adventure navigation bar for literature, science, and nature.
+  Renders level buttons for each nature level, with completed state and modal popup for questions.
+  Includes modal overlay for answering level questions.
+-->
 <nav class="filter">
   <ul class="filter-list">
       <li>
@@ -17,16 +22,9 @@
       </li>
   </ul>
 </nav>
-<section class="info">
-    <div class="stats-container">Last stats: 
-        <p>Level: 1</p>
-        <p>Score: 0</p>
-        <p>Time: 0</p>
-        <p>Correct: 0</p>
-    </div>
-</section>
 <main class="level-path">
       <div class="level-path-container" style="background-image: url('assets/images/level-path-bg/nature-path-bg-vert.png'); background-size: cover; background-position: center;">
+        <!-- Render a button for each level. Completed levels are disabled and styled. -->
         <button
           *ngFor="let level of levels; let i = index" 
           class="level-button" 
@@ -43,12 +41,13 @@
   <div class="level-modal" (click)="$event.stopPropagation()">
     <ng-container *ngIf="selectedLevelIndex !== null">
       <h2>Level {{ levels[selectedLevelIndex!].levelNumber }}</h2>
-      <!-- You can add more level details here -->
+      <!-- Level details and question -->
       <section class="level-container">
         <div class="question">
             <img class="logo-picture" src="assets/images/characters/nature-no-bg.png" alt="Nature Logo">
             <p>{{ levels[selectedLevelIndex!].question }}</p>
             <div class="answer-container">
+              <!-- Render answer options for the current level -->
               <div
                 *ngFor="let option of [levels[selectedLevelIndex!].option1, levels[selectedLevelIndex!].option2, levels[selectedLevelIndex!].option3, levels[selectedLevelIndex!].option4]; let i = index"
                 class="answer"

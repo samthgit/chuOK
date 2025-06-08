@@ -1,10 +1,14 @@
+<!--
+  Main header for authenticated users.
+  Displays the chuOK logo linking to the main page.
+  Navigation bar toggles open/close on click, showing links to Home, Library, Adventure, User Center, and Log Out.
+  Each navigation link closes the nav menu on click. Log Out triggers logout logic.
+-->
 <header class="header">
-    <!-- The header contains the logo and the profile picture, both of which are links to different pages in the application -->
     <a routerLink="/main"><img class="main-logo-picture" src="assets/images/chuOK-logo.png" alt="Home Logo"></a>
 </header>
 <nav #navBar class="nav-bar" [class.open]="navOpen" (click)="toggleNav()">
     <ng-container *ngIf="navOpen">
-        <!-- The navigation links are wrapped in a list for better styling and accessibility -->
         <a routerLink="/home" title="Home" class="bounce-hover" (click)="closeNav()">
             <img class="logo-picture" src="assets/images/pages/home.png" alt="Home Logo">
         </a>

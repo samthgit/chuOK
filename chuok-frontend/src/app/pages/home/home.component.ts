@@ -1,3 +1,4 @@
+// HomeComponent: Main entry for the home page
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+  // Add home logic here if needed
 }

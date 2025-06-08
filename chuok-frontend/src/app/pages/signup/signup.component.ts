@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+/**
+ * SignupComponent handles new user registration via a signup form.
+ * Uses Angular's AuthService for registration and Router for navigation.
+ * Displays error messages on failed signup attempts.
+ */
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -12,13 +17,21 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
+  /** User's chosen username */
   username: string = '';
+  /** User's email input */
   email: string = '';
+  /** User's password input */
   password: string = '';
+  /** Error message to display on signup failure */
   errorMsg: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  /**
+   * Handles form submission. Attempts registration and navigates to /login on success.
+   * Displays an error message if signup fails.
+   */
   onSubmit() {
     this.errorMsg = '';
     this.authService.register({ username: this.username, email: this.email, password: this.password }).subscribe({

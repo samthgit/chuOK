@@ -3,6 +3,10 @@ import { LevelService, Level, CompletedLevel } from '../../services/level.servic
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+/**
+ * LiteratureComponent displays the adventure literature levels and handles user interaction.
+ * Loads levels, tracks completed levels, and manages modal popup for answering questions.
+ */
 @Component({
   selector: 'app-literature',
   standalone: true,
@@ -11,22 +15,35 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./literature.component.css']
 })
 export class LiteratureComponent implements OnInit {
+  /** List of all literature levels */
   levels: Level[] = [];
+  /** Index of the currently selected level for the modal, or null if none */
   selectedLevelIndex: number | null = null;
+  /** World ID for literature (used to fetch levels) */
   worldId = 1;
+  /** Array of completed level IDs */
   completedLevels: number[] = [];
+  /** Index of the selected answer in the modal, or null if none */
   selectedAnswerIndex: number | null = null;
+  /** Whether the selected answer is correct (true/false), or null if unanswered */
   isAnswerCorrect: boolean | null = null;
+  /** User stats for completed levels */
   userStats: CompletedLevel[] = [];
 
   constructor(private levelService: LevelService) {}
 
+  /**
+   * OnInit lifecycle hook. Loads levels, completed levels, and user stats.
+   */
   ngOnInit() {
     this.loadLevels();
     this.loadCompletedLevels();
     this.loadStats();
   }
 
+  /**
+   * Loads all levels for the current world from the service.
+   */
   loadLevels() {
     this.levelService.getLevelsByWorldId(this.worldId).subscribe({
       next: (levels) => {
@@ -40,6 +57,9 @@ export class LiteratureComponent implements OnInit {
     });
   }
 
+  /**
+   * Loads the IDs of completed levels for the user.
+   */
   loadCompletedLevels() {
     this.levelService.getCompletedLevels().subscribe({
       next: (levels) => {
@@ -49,16 +69,27 @@ export class LiteratureComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens the modal for the selected level.
+   */
   openLevel(index: number) {
     this.selectedLevelIndex = index;
     this.selectedAnswerIndex = null;
     this.isAnswerCorrect = null;
   }
 
+  /**
+   * Closes the level modal.
+   */
   closeLevel() {
     this.selectedLevelIndex = null;
   }
 
+  /**
+   * Checks the selected answer for the current level.
+   * If correct, marks the level as completed and closes the modal after a delay.
+   * If incorrect, resets the answer state after a delay.
+   */
   checkAnswer(level: Level, selectedOptionIndex: number) {
     this.selectedAnswerIndex = selectedOptionIndex;
     this.isAnswerCorrect = selectedOptionIndex === level.correctIndex - 1;
@@ -81,10 +112,16 @@ export class LiteratureComponent implements OnInit {
     }
   }
 
+  /**
+   * Returns true if the given level ID is completed by the user.
+   */
   isLevelCompleted(levelId: number): boolean {
     return this.completedLevels.includes(levelId);
   }
 
+  /**
+   * Loads user stats for completed levels.
+   */
   loadStats() {
     this.levelService.getUserStats().subscribe({
       next: (stats) => {

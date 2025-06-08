@@ -1,9 +1,15 @@
-  <ng-container [ngSwitch]="headerType" *ngIf="!hideHeader">
+<!--
+  App root template.
+  Dynamically displays the appropriate header based on the current route using ngSwitch.
+  The router-outlet renders the active page component.
+  The footer is conditionally shown based on the route.
+-->
+<ng-container [ngSwitch]="headerType" *ngIf="!hideHeader">
     <app-header *ngSwitchCase="'default'"></app-header>
     <app-header-main *ngSwitchCase="'main'"></app-header-main>
     <app-header-home *ngSwitchCase="'home'"></app-header-home>
     <app-header-login *ngSwitchCase="'login'"></app-header-login>
-  </ng-container>
+</ng-container>
 <router-outlet></router-outlet>
 
 <app-footer *ngIf="!hideFooter"></app-footer>

@@ -4,6 +4,10 @@ import { Subscription } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 
+/**
+ * HeaderComponent displays the main header and navigation for authenticated users.
+ * Handles nav menu open/close logic, logout, and closes the menu on navigation or outside click.
+ */
 @Component({
   selector: 'app-header',
   standalone: false,
@@ -11,9 +15,12 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  /** Whether the nav menu is open */
   navOpen = false;
 
+  /** Reference to the nav bar element */
   @ViewChild('navBar') navBar!: ElementRef;
+  /** Subscription to router events for closing nav on navigation */
   private routerEventsSub!: Subscription;
 
   constructor(
@@ -22,6 +29,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
+  /**
+   * Subscribes to router events to close nav and scroll to top on navigation.
+   */
   ngOnInit(): void {
     this.routerEventsSub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -37,20 +47,32 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Unsubscribes from router events on destroy.
+   */
   ngOnDestroy(): void {
     if (this.routerEventsSub) {
       this.routerEventsSub.unsubscribe();
     }
   }
 
+  /**
+   * Toggles the nav menu open/close state.
+   */
   toggleNav(): void {
     this.navOpen = !this.navOpen;
   }
 
+  /**
+   * Closes the nav menu.
+   */
   closeNav(): void {
     this.navOpen = false;
   }
 
+  /**
+   * Closes the nav menu if a click occurs outside the nav bar when open.
+   */
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     if (!this.navOpen) return;
@@ -61,9 +83,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Logs out the user, closes the nav, and navigates to the login page.
+   */
   logout() {
     this.authService.logout();
-    this.closeNav(); // Cierra el menú
+    this.closeNav();
     this.router.navigate(['/login']);
   }
 }
