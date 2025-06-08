@@ -19,18 +19,37 @@ import java.util.List;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+/**
+ * Spring Security configuration for the backend application.
+ * Configures JWT authentication, CORS, session management, and endpoint security rules.
+ */
 @Configuration
 public class SecurityConfig {
 
+    /** Filter for processing JWT authentication on incoming requests. */
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    /** Service for loading user details from the database. */
     private final CustomUserDetailsService customUserDetailsService;
 
+    /**
+     * Constructs the SecurityConfig with required dependencies.
+     * @param jwtAuthenticationFilter the JWT authentication filter
+     * @param customUserDetailsService the user details service
+     */
     public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter,
                           CustomUserDetailsService customUserDetailsService) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.customUserDetailsService = customUserDetailsService;
     }
 
+    /**
+     * Configures the security filter chain, including CORS, CSRF, endpoint authorization,
+     * stateless session management, authentication provider, and JWT filter.
+     *
+     * @param http the HttpSecurity object
+     * @return the configured SecurityFilterChain
+     * @throws Exception if configuration fails
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -52,6 +71,11 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /**
+     * Configures CORS settings for the backend API.
+     *
+     * @return the CorsConfigurationSource with allowed origins, methods, and headers
+     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
@@ -67,6 +91,11 @@ public class SecurityConfig {
         return source;
     }
 
+    /**
+     * Configures the authentication provider with user details service and password encoder.
+     *
+     * @return the DaoAuthenticationProvider
+     */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -75,12 +104,23 @@ public class SecurityConfig {
         return authProvider;
     }
 
+    /**
+     * Provides a BCrypt password encoder bean for secure password hashing.
+     *
+     * @return the BCryptPasswordEncoder
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // Esto es necesario para inyectar AuthenticationManager en AuthService si usas login con AuthenticationManager
+    /**
+     * Provides the AuthenticationManager bean for authentication operations.
+     *
+     * @param config the AuthenticationConfiguration
+     * @return the AuthenticationManager
+     * @throws Exception if retrieval fails
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();

@@ -9,17 +9,36 @@ import org.springframework.context.annotation.Configuration;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Configuration class responsible for seeding the database with initial data.
+ * Seeds Worlds, Levels, Articles, and Phrases if the corresponding tables are empty.
+ * This helps provide default content for the application on first run.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class DataBaseSeeder {
 
+    /** Repository for World entities. */
     private final WorldRepository worldRepository;
+    /** Repository for Level entities. */
     private final LevelRepository levelRepository;
+    /** Repository for Article entities. */
     private final ArticleRepository articleRepository;
+    /** Repository for Phrase entities. */
     private final PhraseRepository phraseRepository;
 
+    /**
+     * Seeds the database with initial data after the application context is initialized.
+     * Only seeds if the relevant tables are empty to avoid duplicate entries.
+     */
     @PostConstruct
     public void seedDatabase() {
+        /*
+         * Example seeding logic for Worlds and Levels (currently commented out to prevent duplicates):
+         * - Checks if the World and Level tables are empty.
+         * - Creates default World entries (Literature, Science, Nature).
+         * - Creates default Level entries for each World with sample questions.
+         */
         /*// Seed only if database is empty (to prevent duplicates on app restarts)
         if (worldRepository.count() == 0) {
             createWorld("Literature", 1, worldRepository);
@@ -431,6 +450,13 @@ public class DataBaseSeeder {
         }
     }
 
+    /**
+     * Helper method to create and save a new World entity.
+     * @param name the name of the world
+     * @param order the display order index
+     * @param worldRepository the repository to save the world
+     * @return the saved World entity
+     */
     private World createWorld(String name, int order, WorldRepository worldRepository) {
         World world = new World();
         world.setName(name);
@@ -438,6 +464,18 @@ public class DataBaseSeeder {
         return worldRepository.save(world);
     }
 
+    /**
+     * Helper method to create a new Level entity.
+     * @param number the level number
+     * @param question the quiz question
+     * @param op1 option 1
+     * @param op2 option 2
+     * @param op3 option 3
+     * @param op4 option 4
+     * @param correct the index of the correct answer (1-4)
+     * @param world the World this level belongs to
+     * @return the constructed Level entity
+     */
     private Level newLevel(int number, String question, String op1, String op2, String op3, String op4, int correct, World world) {
         Level level = new Level();
         level.setLevelNumber(number);
@@ -451,6 +489,14 @@ public class DataBaseSeeder {
         return level;
     }
 
+    /**
+     * Helper method to create a new Article entity.
+     * @param title the article title
+     * @param content the article content
+     * @param author the article author
+     * @param date the publication date
+     * @return the constructed Article entity
+     */
     private Article newArticle(String title, String content, String author, LocalDate date) {
         Article article = new Article();
         article.setTitle(title);
@@ -460,6 +506,13 @@ public class DataBaseSeeder {
         return article;
     }
 
+    /**
+     * Helper method to create a new Phrase entity.
+     * @param title the phrase title
+     * @param content the phrase content
+     * @param date the date associated with the phrase
+     * @return the constructed Phrase entity
+     */
     private Phrase newPhrase(String title, String content, LocalDate date) {
         Phrase phrase = new Phrase();
         phrase.setTitle(title);

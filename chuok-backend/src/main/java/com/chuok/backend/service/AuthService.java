@@ -11,6 +11,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for user authentication and registration.
+ * Handles login, registration, and JWT token generation.
+ */
 @Service
 public class AuthService {
 
@@ -21,6 +25,9 @@ public class AuthService {
     private final JwtUtil jwtUtil;
     private final CustomUserDetailsService userDetailsService;
 
+    /**
+     * Constructor for dependency injection.
+     */
     public AuthService(AuthenticationManager authenticationManager,
                        UserRepository userRepository,
                        RoleRepository roleRepository,
@@ -35,6 +42,11 @@ public class AuthService {
         this.userDetailsService = userDetailsService;
     }
 
+    /**
+     * Authenticates a user and returns a JWT token if successful.
+     * @param request the login request containing email and password
+     * @return AuthResponse containing the JWT token
+     */
     public AuthResponse login(AuthRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
@@ -46,6 +58,12 @@ public class AuthService {
         return new AuthResponse(token);
     }
 
+    /**
+     * Registers a new user, assigns the USER role, and returns a JWT token.
+     * @param request the registration request
+     * @return AuthResponse containing the JWT token
+     * @throws RuntimeException if email is already in use or default role not found
+     */
     public AuthResponse register(RegisterRequest request) {
         try {
             if (userRepository.existsByEmail(request.getEmail())) {
@@ -68,8 +86,8 @@ public class AuthService {
 
             return new AuthResponse(token);
         } catch (Exception e) {
-            // Log detallado
-            e.printStackTrace();  // <-- Esto imprimirá la causa exacta en consola
+            // Log detailed error
+            e.printStackTrace();
             throw new RuntimeException("Register failed: " + e.getMessage(), e);
         }
     }
