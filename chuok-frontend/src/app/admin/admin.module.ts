@@ -10,6 +10,13 @@ import { ArticleManagementComponent } from './article-management/article-managem
 import { PhraseManagementComponent } from './phrase-management/phrase-management.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 
+/**
+ * AdminModule
+ *
+ * This module bundles all admin-related components and features.
+ * - Declares admin layout and management components (articles, phrases, users).
+ * - Imports routing, forms, and common Angular modules for admin functionality.
+ */
 @NgModule({
   declarations: [
     AdminLayoutComponent,

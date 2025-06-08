@@ -1,8 +1,16 @@
+<!--
+  Admin article management panel.
+  - Displays a list of articles with options to edit or delete.
+  - Allows creation and editing of articles via a form.
+  - Table shows title, author, date, and actions.
+-->
 <div class="admin-article-panel">
   <h2>Manage Articles</h2>
 
+  <!-- Button to create a new article -->
   <button (click)="createNew()">Create New Article</button>
 
+  <!-- Article editor form, shown when editing or creating -->
   <div *ngIf="isEditing" class="editor">
     <label>Title: <input [(ngModel)]="selectedArticle.title"></label>
     <label>Content: <textarea [(ngModel)]="selectedArticle.content"></textarea></label>
@@ -13,6 +21,7 @@
     <button (click)="cancelEdit()">Cancel</button>
   </div>
 
+  <!-- Table of articles -->
   <table *ngIf="!isEditing">
     <thead>
       <tr>

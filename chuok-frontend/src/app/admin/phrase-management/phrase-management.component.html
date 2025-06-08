@@ -1,8 +1,16 @@
+<!--
+  Admin phrase management panel.
+  - Displays a list of phrases with options to edit or delete.
+  - Allows creation and editing of phrases via a form.
+  - Table shows title, content, date, and actions.
+-->
 <div class="admin-phrase-panel">
   <h2>Manage Phrases</h2>
 
+  <!-- Button to create a new phrase -->
   <button (click)="createNew()">Create New Phrase</button>
 
+  <!-- Phrase editor form, shown when editing or creating -->
   <div *ngIf="isEditing" class="editor">
     <label>Title: <input [(ngModel)]="selectedPhrase.title"></label>
     <label>Content: <textarea [(ngModel)]="selectedPhrase.content"></textarea></label>
@@ -12,6 +20,7 @@
     <button (click)="cancelEdit()">Cancel</button>
   </div>
 
+  <!-- Table of phrases -->
   <table *ngIf="!isEditing">
     <thead>
       <tr>

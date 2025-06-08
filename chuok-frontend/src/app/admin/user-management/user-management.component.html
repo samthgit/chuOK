@@ -1,6 +1,13 @@
+<!--
+  Admin user management panel.
+  - Displays a list of users with their name, email, and current role.
+  - Allows changing user roles via a dropdown select.
+  - Table shows name, email, current role, and role change option.
+-->
 <div class="user-admin-panel">
   <h2>User Management</h2>
 
+  <!-- Table of users with role management -->
   <table>
     <thead>
       <tr>
@@ -16,6 +23,7 @@
         <td>{{ user.email }}</td>
         <td>{{ user.role.name }}</td>
         <td>
+            <!-- Dropdown to change user role -->
             <select [value]="user.role?.id" (change)="changeRoleFromEvent(user, $event)">
             <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
             </select>

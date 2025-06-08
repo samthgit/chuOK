@@ -1,3 +1,9 @@
+<!--
+  Admin layout main container. Contains sidebar navigation and main content area.
+  - .admin-layout: Flex container for sidebar and content.
+  - .sidebar: Navigation links for admin sections (Articles, Phrases, Users).
+  - .content: Main area where admin pages are rendered via router-outlet.
+-->
 <div class="admin-layout">
   <aside class="sidebar">
     <h2>Admin Panel</h2>
@@ -9,6 +15,7 @@
   </aside>
 
   <main class="content">
+    <!-- Routed admin content will be displayed here -->
     <router-outlet></router-outlet>
   </main>
 </div>

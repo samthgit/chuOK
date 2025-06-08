@@ -6,6 +6,18 @@ import { PhraseManagementComponent } from './phrase-management/phrase-management
 import { UserManagementComponent } from './user-management/user-management.component';
 import { RoleGuard } from '../guards/role.guard';
 
+/**
+ * AdminRoutingModule
+ *
+ * Defines child routes for the admin section, protected by RoleGuard.
+ * - '' (root): Loads AdminLayoutComponent and its children.
+ *   - 'articles': Article management page
+ *   - 'phrases': Phrase management page
+ *   - 'users': User management page
+ *   - '': Redirects to 'articles' by default
+ *
+ * All routes require admin role via RoleGuard.
+ */
 const routes: Routes = [
   {
     path: '',
